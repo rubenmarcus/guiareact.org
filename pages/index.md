@@ -1,12 +1,13 @@
-import "highlight.js/styles/github-gist.css";
-import "../styles/old-layout.css";
+
 import Head from "next/head";
 
-# Padrões React [no GitHub](https://github.com/chantastic/reactpatterns.com)
+# Padrões de código React [ver no GitHub](https://github.com/chantastic/reactpatterns.com)
 
 Um guia de padrões React em Português. <br/>
-Baseado no Original por Michael Chan [@chantastic]((https://github.com/chantastic)
-).
+
+Baseado no Original por Michael Chan [@chantastic](https://github.com/chantastic)<br/> 
+
+Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 
 ## Conteúdo
 
@@ -262,7 +263,7 @@ In most cases it's either an `array` or a `string`.
 <div>{["Hello ", <span>World</span>, "!"]}</div>
 ```
 
-## Array as children
+## Array como filho (Array as children)
 
 Providing an array as `children` is a very common.  
 It's how lists are drawn in React.

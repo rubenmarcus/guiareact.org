@@ -2,6 +2,8 @@ import React from "react";
 import App, { Container } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
+import "../styles/style.css";
 import { initGA, logPageView } from "../modules/analytics";
 
 export default class MyApp extends App {
@@ -43,8 +45,17 @@ export default class MyApp extends App {
             rel="stylesheet"
           />
         </Head>
-        <div style={{ maxWidth: "32em" }}>
+        <div style={{ maxWidth: "32em" }} id="guiaPadroes">
           <Component {...pageProps} />
+          <footer>
+            Baseado no Original por Michael Chan{" "}
+            <a
+              href="https://github.com/chantastic
+"
+            >
+              @chantastic
+            </a>
+          </footer>
         </div>
       </Container>
     );

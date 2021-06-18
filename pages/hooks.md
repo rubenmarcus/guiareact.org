@@ -1,5 +1,4 @@
 import "highlight.js/styles/github-gist.css";
-import "../styles/old-layout.css";
 import Head from "next/head";
 
 # React Patterns / Hooks Preview (draft)

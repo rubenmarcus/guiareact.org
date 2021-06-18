@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+}
+#guiaPadroes div h1:first-child {
+  background: #20232a;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  padding: 12px 85px;
+  margin: 0px;
+  left: 0px;
+  font-weight: 600;
+}
+#guiaPadroes div p:nth-child(3), #guiaPadroes div p:nth-child(4) {
+  background: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  padding-left: 85px;
+  padding-bottom: 23px;
+}
+#guiaPadroes div p:nth-child(4){
+  margin-top: -25px;
+}
+#guiaPadroes div p:nth-child(4) + h2 {
+  margin-top: 79px;
+  display: inline-block;
+  margin-bottom: 38px;
+}
+
+footer {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 12px;
+  text-align: center;
+  width: 346px;
+  position: fixed;
+  bottom: -1px;
+  right: 18px;
+}
+
+footer a{
+  font-size:12px;
+}
+
+#guiaPadroes div h1:first-child + p {
+  position: absolute;
+  background: #fff;
+  top: 38px;
+  left: 0px;
+  width: 100%;
+  padding: 24px 85px;
+}
+#guiaPadroes div h1:first-child {
+  color:#61dafb
+}
+
+#guiaPadroes div h1:first-child  a {
+  position: absolute;
+  right: 30px;
+  top: 18px;
+  background: #000;
+  color: #fff;
+}
+a{
+  background-color: rgba(187,239,253,0.3);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  color: #1a1a1a;
+  display:inline-block;
+  font-size: 16px;
+  text-decoration: none;
+
+}
+p,pre{padding:5px;}
+
+body {
+  font-size: 16px;
+  margin: 12vw 5vw 0;
+  color: #111;
+  background: #f4f4f4;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  line-height: 1.4;
+}
+
+h1, h2{
+  color:  #282c34;
+  font-weight:500;
+
+}
+@media (min-width: 0) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (min-width: 480px) {
+  body {
+    font-size: 18px;
+  }
+}
+@media (min-width: 720px) {
+  body {
+    font-size: 20px;
+  }
+}
+@media (min-width: 960px) {
+  body {
+    font-size: 22px;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    font-size: 24px;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+}
+h2 {
+  margin-top: 6vw;
+}
+p {
+  /* font-family: Athelas, Georgia, serif; */
+  font-size: 0.9em;
+  line-height: 1.3em;
+  /* max-width: 32em; */
+}
+pre code {
+  display: table;
+}
+code, pre {
+  font-family: monospace, monospace;
+  font-size: 22px;
+  border-radius: 6px;
+  margin: 19px;
+}
+code,
+.highlight pre {
+  font-size: 0.9em;
+}
+#contents + ul {
+  text-decoration: none;
+  padding-left: 20px;
+}
+.black-link,
+#contents + ul li a {
+  color: #000;
+  text-decoration: none;
+}
+.black-link,
+#contents + ul li a:hover {
+  text-decoration: underline;
+}
+.highlight {
+  margin: 1rem 0;
+}
+.hljs {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  margin-top: 1em;
+  margin-right: 0;
+  margin-bottom: 1em;
+  margin-left: -1em;
+  font-size: 0.85em;
+  /* max-width: 32em; */
+}
+code {
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 0.25em 0.25em;
+  margin: -0.25em 0;
+}
+hr {
+  margin-top: 2em;
+  border-color: rgba(0, 0, 0, 0.4);
+  border-width: 0;
+  border-bottom-width: 1px;
+  max-width: 16em;
+}
