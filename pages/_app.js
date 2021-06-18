@@ -44,18 +44,24 @@ export default class MyApp extends App {
             href="https://fonts.googleapis.com/css?family=Merriweather:300,300i&display=swap"
             rel="stylesheet"
           />
+          <script async defer src="https://buttons.github.io/buttons.js"></script>
         </Head>
-        <div style={{ maxWidth: "32em" }} id="guiaPadroes">
+        <div className="guiaPadroes">
+          <header>
+            <h1>Guia de Padrões React</h1>
+            <nav>
+              <ul>
+                <li><a href="Hooks">Guia de Hooks</a></li>
+                <li><a href="Hooks">Links</a></li>
+                <li><a href="Hooks">Contribua</a></li>
+                <li>
+<a className="github-button" href="https://github.com/rubenmarcus/padroesreact.org" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star rubenmarcus/padroesreact.org on GitHub">Star</a></li>
+              </ul>
+            </nav>
+          </header>
           <Component {...pageProps} />
-          <footer>
-            Baseado no Original por Michael Chan{" "}
-            <a
-              href="https://github.com/chantastic
-"
-            >
-              @chantastic
-            </a>
-          </footer>
+         
+
         </div>
       </Container>
     );

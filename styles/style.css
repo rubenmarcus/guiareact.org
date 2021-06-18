@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 html {
   box-sizing: border-box;
@@ -11,9 +11,43 @@ html {
 html {
   -webkit-font-smoothing: antialiased;
 }
-#guiaPadroes div h1:first-child {
+::marker {
+  font-size: 12px;
+}
+header {
   background: #20232a;
-  position: absolute;
+  top: 0px;
+  width: 100%;
+  padding: 12px 85px;
+  align-items: center;
+  height: 70px;
+  font-weight: 600;
+  color: #61dafb;
+  display: flex;
+}
+header h1 {
+  color: #61dafb;
+}
+header ul {
+  display: flex;
+  flex-wrap: nowrap;
+}
+header li {
+  list-style: none;
+  margin-right: 41px;
+  line-height: 15px;
+  line-height: 22px;
+}
+header a {
+  color: #fff;
+  background: transparent;
+  font-weight: 400;
+}
+header a:hover {
+  color: #61dafb;
+}
+.guiaPadroes div h1:first-child {
+  background: #20232a;
   top: 0px;
   width: 100%;
   padding: 12px 85px;
@@ -21,84 +55,84 @@ html {
   left: 0px;
   font-weight: 600;
 }
-#guiaPadroes div p:nth-child(3), #guiaPadroes div p:nth-child(4) {
+.guiaPadroes div p:nth-child(3),
+.guiaPadroes div p:nth-child(4) {
   background: #fff;
   font-weight: 400;
   font-size: 16px;
-  position: absolute;
   width: 100%;
-  left: 0px;
   padding-left: 85px;
-  padding-bottom: 23px;
 }
-#guiaPadroes div p:nth-child(4){
-  margin-top: -25px;
-}
-#guiaPadroes div p:nth-child(4) + h2 {
-  margin-top: 79px;
-  display: inline-block;
-  margin-bottom: 38px;
+.guiaPadroes div p:nth-child(4) {
+  margin: 0;
+  padding-bottom: 30px;
 }
 
-footer {
-  background: #fff;
-  border: 1px solid #333;
-  border-radius: 5px 5px 0px 0px;
-  font-size: 12px;
-  text-align: center;
-  width: 346px;
-  position: fixed;
-  bottom: -1px;
-  right: 18px;
+code {
+  background: rgba(255, 229, 100, 0.2);
+  padding: 0.25em 0.25em;
+  margin: -0.25em 0;
 }
 
-footer a{
-  font-size:12px;
-}
-
-#guiaPadroes div h1:first-child + p {
-  position: absolute;
+.guiaPadroes div h1:first-child + p {
   background: #fff;
   top: 38px;
   left: 0px;
   width: 100%;
-  padding: 24px 85px;
+  padding: 25px 85px;
+  margin: 0;
 }
-#guiaPadroes div h1:first-child {
-  color:#61dafb
+.guiaPadroes div h1:first-child {
+  color: #61dafb;
 }
-
-#guiaPadroes div h1:first-child  a {
+.guiaPadroes p,
+.guiaPadroes h2,
+.guiaPadroes ul,
+.guiaPadroes pre,
+.guiaPadroes h3 {
+  padding-left: 85px;
+  padding-right: 35px;
+}
+.guiaPadroes ul p {
+  padding-left: 0px;
+}
+.guiaPadroes ul li ul {
+  padding-left: 20px;
+}
+.guiaPadroes div h1:first-child a {
   position: absolute;
   right: 30px;
   top: 18px;
   background: #000;
   color: #fff;
 }
-a{
-  background-color: rgba(187,239,253,0.3);
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+a {
+  background-color: rgba(187, 239, 253, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   color: #1a1a1a;
-  display:inline-block;
+  display: inline-block;
   font-size: 16px;
   text-decoration: none;
-
 }
-p,pre{padding:5px;}
+p,
+pre {
+  padding: 5px;
+}
 
 body {
   font-size: 16px;
-  margin: 12vw 5vw 0;
+  margin: 0;
   color: #111;
   background: #f4f4f4;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.4;
 }
 
-h1, h2{
-  color:  #282c34;
-  font-weight:500;
-
+h1,
+h2 {
+  color: #282c34;
+  font-weight: 500;
 }
 @media (min-width: 0) {
   body {
@@ -142,11 +176,13 @@ p {
   line-height: 1.3em;
   /* max-width: 32em; */
 }
-pre code {
+pre,
+code {
   display: table;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
 }
-code, pre {
-  font-family: monospace, monospace;
+code,
+pre {
   font-size: 22px;
   border-radius: 6px;
   margin: 19px;
@@ -182,9 +218,8 @@ code,
   /* max-width: 32em; */
 }
 code {
-  background-color: rgba(0, 0, 0, 0.08);
-  padding: 0.25em 0.25em;
-  margin: -0.25em 0;
+  display: inline-block;
+  margin: 0;
 }
 hr {
   margin-top: 2em;
@@ -192,4 +227,14 @@ hr {
   border-width: 0;
   border-bottom-width: 1px;
   max-width: 16em;
+}
+.guiaPadroes ul {
+  padding-left: 119px;
+}
+.guiaPadroes div p:nth-child(3) {
+  margin: 0;
+}
+
+#guia-de-padrões-react {
+  display: none;
 }

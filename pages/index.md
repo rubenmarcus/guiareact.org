@@ -1,42 +1,81 @@
-
-import Head from "next/head";
-
-# Padrões de código React [ver no GitHub](https://github.com/chantastic/reactpatterns.com)
+# Guia de Padrões React
 
 Um guia de padrões React em Português. <br/>
 
-Baseado no Original por Michael Chan [@chantastic](https://github.com/chantastic)<br/> 
+Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](https://github.com/chantastic)<br/>
 
 Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 
 ## Conteúdo
 
+  - [Traduções](#traduções)
+  - [Elementos](#elementos)
+  - [Componentes](#componentes)
+  - [Fragmentos](#fragmentos)
+  - [Expressões](#expressões)
+  - [Props (Propriedades)](#props-propriedades)
+  - [defaultProps (Propriedades Padrão)](#defaultprops-propriedades-padrão)
+  - [Desestruturando props](#desestruturando-props)
+  - [Atributos de spread JSX](#atributos-de-spread-jsx)
+  - [Mergeando props desestruturadas com outros valores](#mergeando-props-desestruturadas-com-outros-valores)
+  - [Renderização Condicional](#renderização-condicional)
+    - [`if`](#if)
+    - [`unless`](#unless)
+    - [`if-else`](#if-else)
+  - [Tipos de Filho (Children Types)](#tipos-de-filho-children-types)
+    - [`String`](#string)
+    - [`Array`](#array)
+  - [Array como filho (Array as children)](#array-como-filho-array-as-children)
+  - [Função como filha (Function as children)](#função-como-filha-function-as-children)
+  - [Renderizando uma prop](#renderizando-uma-prop)
+  - [Passando um Filho (Children)](#passando-um-filho-children)
+  - [Component Proxy](#component-proxy)
+  - [Component de estilo](#component-de-estilo)
+  - [Switch de Eventos](#switch-de-eventos)
+  - [Componente de Layout](#componente-de-layout)
+  - [Componente Container](#componente-container)
+  - [Higher-order component](#higher-order-component)
+  - [Elevando o State (State Hoisting)](#elevando-o-state-state-hoisting)
+  - [Passando props de Componente filho para  Componente pai](#passando-props-de-componente-filho-para--componente-pai)
+  - [Inputs Controlados](#inputs-controlados)
+
 ## Traduções
 
-These translations are not verified and links are not endorsements.
+Traduções não verificadas, e links não significam que são aprovadas.
 
 [Chinese](https://reactpatterns.cn)
 
 ## Elementos
 
-[Elementos](https://reactjs.org/docs/glossary.html#elements) are anything inside angle brackets.
+[Elementos](https://reactjs.org/docs/glossary.html#elements) são tudo que está envolvido por <>.
 
 ```jsx
 <div></div>
-<Greeting />
+<MeuComponente />
 ```
 
-[Components](#component) return Elements.
+[Componentes](#componentes) retornam Elementos.
 
 ## Componentes
 
-Define a [Component](https://reactjs.org/docs/glossary.html#components) by declaring a function that returns a React [Element](#element).
+Um [Componente](https://reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
 
 ```jsx
-function Greeting() {
-  return <div>Hi there!</div>;
+function MeuComponente() {
+  return <div>Olá Mundo</div>;
 }
 ```
+
+## Fragmentos
+
+Um [Componente](https://reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
+
+```jsx
+function MeuComponente() {
+  return <div>Olá Mundo</div>;
+}
+```
+
 
 ## Expressões
 
@@ -69,13 +108,13 @@ function Greeting(props) {
   return <div>Hi {props.name}!</div>;
 }
 Greeting.defaultProps = {
-  name: "Guest"
+  name: "Guest",
 };
 ```
 
 ---
 
-## Desestruturando props 
+## Desestruturando props
 
 [Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) is a JavaScript feature.  
 It was added to the language in ES2015.  
@@ -272,7 +311,7 @@ We use `map()` to create an array of React Elements for every value in the array
 
 ```jsx
 <ul>
-  {["first", "second"].map(item => (
+  {["first", "second"].map((item) => (
     <li>{item}</li>
   ))}
 </ul>
@@ -294,12 +333,12 @@ This pattern can be combined with destructuring, JSX Spread Attributes, and othe
 </ul>
 ```
 
-## Function as children
+## Função como filha (Function as children)
 
 React components don't support functions as `children`.
 However, [render props](#render-prop) is a pattern for creating components that take functions as children.
 
-## Render prop
+## Renderizando uma prop
 
 Here's a component that uses a render callback.  
 It's not useful, but it's an easy illustration to start with.
@@ -313,7 +352,7 @@ The component calls `children` as a function, with some number of arguments. Her
 To use this component, we give it a [function as `children`](#function-as-children).
 
 ```jsx
-<Width>{width => <div>window is {width}</div>}</Width>
+<Width>{(width) => <div>window is {width}</div>}</Width>
 ```
 
 We get this output.
@@ -326,7 +365,7 @@ With this setup, we can use this `width` to make rendering decisions.
 
 ```jsx
 <Width>
-  {width => (width > 600 ? <div>min-width requirement met!</div> : null)}
+  {(width) => (width > 600 ? <div>min-width requirement met!</div> : null)}
 </Width>
 ```
 
@@ -334,7 +373,7 @@ If we plan to use this condition a lot, we can define another components to enca
 
 ```jsx
 const MinWidth = ({ width: minWidth, children }) => (
-  <Width>{width => (width > minWidth ? children : null)}</Width>
+  <Width>{(width) => (width > minWidth ? children : null)}</Width>
 );
 ```
 
@@ -363,7 +402,7 @@ class WindowWidth extends React.Component {
 
 Many developers favor [Higher Order Components](#higher-order-component) for this type of functionality. It's a matter of preference.
 
-## Children pass-through
+## Passando um Filho (Children)
 
 You might create a component designed to apply `context` and render its `children`.
 
@@ -395,7 +434,7 @@ It's best to treat `children` as an opaque data type. React provides `React.Chil
 return React.Children.only(this.props.children);
 ```
 
-## Proxy component
+## Component Proxy
 
 _(I'm not sure if this name makes sense)_
 
@@ -422,7 +461,7 @@ We can use `Button` in place of `button` and ensure that the `type` attribute is
 // <button type="button" class="CTA">Send Money</button>
 ```
 
-## Style component
+## Component de estilo
 
 This is a [Proxy component](#proxy-component) applied to the practices of style.
 
@@ -437,7 +476,7 @@ We can generate this output using a couple single-purpose components.
 ```jsx
 import classnames from "classnames";
 
-const PrimaryBtn = props => <Btn {...props} primary />;
+const PrimaryBtn = (props) => <Btn {...props} primary />;
 
 const Btn = ({ className, primary, ...props }) => (
   <button
@@ -467,7 +506,7 @@ Using these components, all of these result in the same output.
 
 This can be a huge boon to style maintenance. It isolates all concerns of style to a single component.
 
-## Event switch
+## Switch de Eventos
 
 When writing event handlers it's common to adopt the `handle{eventName}` naming convention.
 
@@ -508,7 +547,7 @@ Alternatively, for simple components, you can call imported actions/functions di
 
 Don't fret about performance optimizations until you have problems. Seriously don't.
 
-## Layout component
+##  Componente de Layout
 
 Layout components result in some form of static DOM element. It might not need to update frequently, if ever.
 
@@ -542,7 +581,7 @@ class HorizontalSplit extends React.Component {
 }
 ```
 
-## Container component
+## Componente Container
 
 "A container does data fetching and then renders its corresponding sub-component. That’s it."&mdash;[Jason Bonta](https://twitter.com/jasonbonta)
 
@@ -551,7 +590,7 @@ Given this reusable `CommentList` component.
 ```jsx
 const CommentList = ({ comments }) => (
   <ul>
-    {comments.map(comment => (
+    {comments.map((comment) => (
       <li>
         {comment.body}-{comment.author}
       </li>
@@ -607,7 +646,7 @@ const Greeting = ({ name }) => {
 If it gets `props.name`, it's gonna render that data. Otherwise it'll say that it's "Connecting...". Now for the the higher-order bit.
 
 ```jsx
-const Connect = ComposedComponent =>
+const Connect = (ComposedComponent) =>
   class extends React.Component {
     constructor() {
       super();
@@ -635,7 +674,7 @@ const ConnectedMyComponent = Connect(Greeting);
 
 This is a powerful pattern for providing fetching and providing data to any number of [function components](#function-component).
 
-## State hoisting
+## Elevando o State (State Hoisting)
 
 [function-component](#function-component) don't hold state (as the name implies).
 
@@ -648,12 +687,12 @@ It's accomplished by passing a callback from a container component to a child co
 ```jsx
 class NameContainer extends React.Component {
   render() {
-    return <Name onChange={newName => alert(newName)} />;
+    return <Name onChange={(newName) => alert(newName)} />;
   }
 }
 
 const Name = ({ onChange }) => (
-  <input onChange={e => onChange(e.target.value)} />
+  <input onChange={(e) => onChange(e.target.value)} />
 );
 ```
 
@@ -670,7 +709,7 @@ class NameContainer extends React.Component {
   }
 
   render() {
-    return <Name onChange={newName => this.setState({ name: newName })} />;
+    return <Name onChange={(newName) => this.setState({ name: newName })} />;
   }
 }
 ```
@@ -686,7 +725,11 @@ _[Controlled input](#controlled-input) is an important pattern to know for use w
 
 _(It's best to process the event object on the stateful component)_
 
-## Controlled input
+
+## Passando props de Componente filho para  Componente pai
+Lorem Ipsum
+
+## Inputs Controlados
 
 It's hard to talk about controlled inputs in the abstract.
 Let's start with an uncontrolled (normal) input and go from there.
@@ -727,7 +770,7 @@ Then, changing the input is a matter of changing component state.
 return (
   <input
     value={this.state.name}
-    onChange={e => this.setState({ name: e.target.value })}
+    onChange={(e) => this.setState({ name: e.target.value })}
   />
 );
 ```
