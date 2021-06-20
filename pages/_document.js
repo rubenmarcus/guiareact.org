@@ -3,28 +3,25 @@ import PageHead from "../components/pagehead";
 import AppHeader from "../components/header";
 
 class MyDocument extends Document {
-    static async getInitialProps(ctx) {
-        let pageProps = null;
+  static async getInitialProps(ctx) {
+    let pageProps = null;
 
-        const originalRenderPage = ctx.renderPage;
-        ctx.renderPage = () =>
-            originalRenderPage({
-                enhanceApp: (App) => (props) => {
-                    pageProps = props.pageProps;
-                    return <App {...props} />
-                },
-                enhanceComponent: (Component) => Component,
-            })
+    const originalRenderPage = ctx.renderPage;
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App) => (props) => {
+          pageProps = props.pageProps;
+          return <App {...props} />;
+        },
+        enhanceComponent: (Component) => Component,
+      });
 
-        const initialProps = await Document.getInitialProps(ctx);
-        return { ...initialProps, pageProps }
-    }
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps, pageProps };
+  }
 
-    render() {
-        const { pageProps } = this.props;
-        
-        console.log("This is my page props:");
-        console.log(pageProps);
+  render() {
+    const { pageProps } = this.props;
     return (
       <Html>
         <Head>
@@ -33,9 +30,9 @@ class MyDocument extends Document {
         <body className={`guiaPadroes ${pageProps.cssClass}`}>
           <AppHeader />
           <main>
-          <Main />
+            <Main />
           </main>
-      
+
           <NextScript />
         </body>
       </Html>

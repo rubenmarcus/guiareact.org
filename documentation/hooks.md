@@ -1,7 +1,4 @@
-import "highlight.js/styles/github-gist.css";
-import Head from "next/head";
-
-# React Patterns / Hooks Preview (draft)
+# Guia de Hooks
 
 _mixins for functional components_
 
