@@ -1,5 +1,5 @@
 import MdLoader from '../../config/md-loader'
-import STATIC_PATHS from '../../config/static-paths'
+import {STATIC_PATHS, PATH_PROPS}  from '../../config/static-paths'
 import MdContainer from "../../components/mdcontainer"
 
 
@@ -10,10 +10,13 @@ function Page(props) {
   export default Page
   
   export async function getStaticProps(context) {
+      const pathProps = PATH_PROPS(context.params.slug)
+
     return {
       props: {
           markdown: MdLoader[context.params.slug],
-          cssClass: context.params.slug
+          cssClass: context.params.slug,
+          title: pathProps.title
       },
     }
   }

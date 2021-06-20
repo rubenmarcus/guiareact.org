@@ -1,9 +1,9 @@
-export default function PageHead() {
+export default function PageHead(props) {
   const GA_TRACKING_ID = "G-TQFVHD7RW1";
 
   return (
     <>
-      <title key="title">Guia de Padrões React</title>
+      <title key="title">{props.title? props.title : 'Guia de Padrões React'}</title>
       <meta
         name="viewport"
         content="initial-scale=1.0, width=device-width"

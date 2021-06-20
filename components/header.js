@@ -1,8 +1,8 @@
-export default function AppHeader(){
+export default function AppHeader(props){
 
     return(
         <header>
-            <h1>Guia de Padrões React</h1>
+            <h1>{props.title}</h1>
             <nav>
               <ul>
                 <li>

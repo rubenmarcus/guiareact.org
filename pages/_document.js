@@ -25,10 +25,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <PageHead />
+          <PageHead title={pageProps.title} />
         </Head>
         <body className={`guiaPadroes ${pageProps.cssClass}`}>
-          <AppHeader />
+          <AppHeader title={pageProps.title} />
           <main>
             <Main />
           </main>
