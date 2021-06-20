@@ -17,11 +17,11 @@ export default function AppHeader(props){
                 <li>
                   <a
                     className="github-button"
-                    href="https://github.com/rubenmarcus/padroesreact.org"
+                    href="https://github.com/rubenmarcus/guiareact.org"
                     data-color-scheme="no-preference: light; light: light; dark: dark;"
                     data-size="large"
                     data-show-count="true"
-                    aria-label="Star rubenmarcus/padroesreact.org on GitHub"
+                    aria-label="Star rubenmarcus/guiareact.org on GitHub"
                   >
                     Star
                   </a>

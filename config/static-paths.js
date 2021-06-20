@@ -6,8 +6,4 @@ const ROUTES = [
 
 export const STATIC_PATHS = {paths: ROUTES, fallback: false};
 
-const MAPPED_PATHS = STATIC_PATHS.paths.map((routes) => {
-    return routes.params;
-  })
-
-export const PATH_PROPS = (slug) => MAPPED_PATHS.find( route => route.slug ===  slug );
+ export const PATH_PROPS = slug => STATIC_PATHS.paths.map(routes => routes.params).find( route => route.slug ===  slug );

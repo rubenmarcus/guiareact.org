@@ -1,17 +1,11 @@
 import ReactMarkdown from "react-markdown";
-import hljs from 'highlight.js';
+import remarkSlug from "remark-slug";
+import remarkLinks from "remark-external-links";
+import remarkHljs from "remark-highlight.js";
+import remarkToc from "remark-toc";
 
-import { useEffect } from "react";
+export default function MdContainer({ markdown }) {
+  const remarkPluginSet = [remarkSlug, remarkLinks, remarkHljs, remarkToc];
 
-
-export default function MdContainer({markdown}){
-      
-    useEffect(() => {
-        hljs.highlightAll();
-    }, []);
-
-
-    return (
-        <ReactMarkdown children={markdown}  />
-    )
+  return <ReactMarkdown children={markdown} remarkPlugins={remarkPluginSet} />;
 }
