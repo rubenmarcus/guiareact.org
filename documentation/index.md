@@ -1,8 +1,8 @@
 # Guia de Padrões React
 
-Um guia de padrões React em Português. <br/>
+Um guia de padrões React em Português.
 
-Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](https://github.com/chantastic)<br/>
+Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](https://github.com/chantastic)
 
 Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 

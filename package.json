@@ -21,16 +21,22 @@
   },
   "homepage": "https://github.com/chantastic/reactpatterns.com#readme",
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-mdx": "^1.2.0",
+    "@mdx-js/loader": "^1.6.22",
+    "@next/mdx": "^11.0.0",
     "highlight.js": "^11.0.1",
-    "next": "^8.1.0",
+    "next": "^10.2.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
+    "react-markdown": "^6.0.2",
     "remark-external-links": "^4.0.0",
     "remark-highlight.js": "^5.1.0",
     "remark-slug": "^5.1.1",
     "remark-toc": "^5.1.1"
+  },
+  "devDependencies": {
+    "file-loader": "^1.1.11",
+    "postcss": "^8.3.5",
+    "raw-loader": "^4.0.2"
   }
 }

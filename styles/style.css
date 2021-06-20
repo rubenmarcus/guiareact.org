@@ -238,3 +238,7 @@ hr {
 #guia-de-padrões-react {
   display: none;
 }
+
+.home main > div > h1 {
+  display: none;
+}
