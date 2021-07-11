@@ -1,4 +1,4 @@
-import Markdown from "../documentation/index.md"
+import Markdown from "../documentation/HOME.md"
 import MdContainer from "../components/mdcontainer"
 
 
@@ -9,7 +9,8 @@ export default function Page(){
 export async function getStaticProps(context) {
   return {
     props: {
-      cssClass: 'home'
+      cssClass: 'home',
+      title: 'Guia de Padrões React'
     }, 
   }
 }

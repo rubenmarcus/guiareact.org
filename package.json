@@ -1,7 +1,7 @@
 {
-  "name": "padroesreact.org",
+  "name": "guiareact.org",
   "version": "0.0.1",
-  "description": "React Patterns and Practices. No nonsense.",
+  "description": "Guia de Padrões React em Português.Baseado no React Patterns de Michael Chan.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,22 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/chantastic/reactpatterns.com.git"
+    "url": "git+ssh://git@github.com/rubenmarcus/guiareact.org.git"
   },
-  "author": "Michael Chan <mijoch@gmail.com>",
+  "author": "Michael Chan <mijoch@gmail.com>, Ruben Marcus<ruben@rubenmarcus.dev>",
   "license": "BY-NC-SA",
   "bugs": {
-    "url": "https://github.com/chantastic/reactpatterns.com/issues"
+    "url": "https://github.com/rubenmarcus/guiareact.org/issues"
   },
-  "homepage": "https://github.com/chantastic/reactpatterns.com#readme",
+  "homepage": "https://github.com/readme/guiareact.org#readme",
   "dependencies": {
-    "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^11.0.0",
     "highlight.js": "^11.0.1",
     "next": "^10.2.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-ga": "^2.5.7",
     "react-markdown": "^6.0.2",
     "remark-external-links": "^4.0.0",
     "remark-highlight.js": "^5.1.0",
