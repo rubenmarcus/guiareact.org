@@ -1,4 +1,4 @@
-import Markdown from "../documentation/HOME.md"
+import Markdown from "../documentation/DOC-HOME.md"
 import MdContainer from "../components/mdcontainer"
 
 
