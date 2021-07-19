@@ -6,15 +6,6 @@ export default function AppHeader(props){
             <nav>
               <ul>
                 <li>
-                  <a href="Hooks">Guia de Hooks</a>
-                </li>
-                <li>
-                  <a href="Hooks">Links</a>
-                </li>
-                <li>
-                  <a href="Hooks">Contribua</a>
-                </li>
-                <li>
                   <a
                     className="github-button"
                     href="https://github.com/rubenmarcus/guiareact.org"
