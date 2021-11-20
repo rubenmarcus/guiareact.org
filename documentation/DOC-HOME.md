@@ -740,22 +740,17 @@ Um input controlado  desabilita as mutações do DOM que tornam isso possível.
 Você seta o `value` do input no escopo do Componente e ele não altera no escopo do DOM.
 
 ```jsx
-<input type="text" value="This won't change. Try it." />
+<input type="text" value="Isso não será alterado. Tente." />
 ```
 
 Obviamente, os inputs estáticos não são muito úteis para seus usuários.
 Então derivamos o `value` do state.
 
 ```jsx
-class ControlledNameInput extends React.Component {
-  constructor() {
-    super();
-    this.state = { name: "" };
-  }
+function ControlledNameInput () {
+  const [name, setName] = useState("")
 
-  render() {
-    return <input type="text" value={this.state.name} />;
-  }
+  return <input type="text" value={name} />;
 }
 ```
 Então, mudar o input é uma questão de mudar o estado do componente. 
@@ -763,12 +758,13 @@ Então, mudar o input é uma questão de mudar o estado do componente.
 ```jsx
 return (
   <input
-    value={this.state.name}
-    onChange={(e) => this.setState({ name: e.target.value })}
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
   />
 );
 ```
-Esta é um input controlado.
+Este é um input controlado.
 Ele apenas atualiza o DOM quando o estado é alterado em nosso componente.
 Isso é inestimável ao criar interfaces de usuário consistentes.
 
