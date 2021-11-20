@@ -20,8 +20,8 @@ Traduzido para Português e revisado por [@rubenmarcus](https://github.com/ruben
   - [Mergeando props desestruturadas com outros valores](#mergeando-props-desestruturadas-com-outros-valores)
   - [Renderização Condicional](#renderização-condicional)
     - [`if`](#if)
-    - [`unless`](#unless)
-    - [`if-else`](#if-else)
+    - [`unless`](#unless-ao-menos-que)
+    - [`if-else`](#if-else-operador-ternário)
   - [Tipos de Filho (Children Types)](#tipos-de-filho-children-types)
     - [`String`](#string)
     - [`Array`](#array)
@@ -116,7 +116,7 @@ OlaUsuario.defaultProps = {
 
 ## Desestruturando props
 
-[Atribuição via desestruturação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) é um recurso do  
+[Atribuição via desestruturação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) é um recurso do
 
 Foi adicionado a linguagem no ES2015.
 
@@ -131,7 +131,7 @@ Funciona com Array também.
 let numeros = ["um", "dois"];
 let [um, dois] = numeros;
 ```
-Atribuição via desestruturação (Destructuring assignment) é usado muito em [componentes funcionais](#function-component).  
+Atribuição via desestruturação (Destructuring assignment) é usado muito em [componentes funcionais](#function-component).
 Essas declarações de componente são equivalentes.
 
 ```jsx
@@ -144,7 +144,7 @@ function Hello({ name }) {
 }
 ```
 
-Existe uma sintaxe para atribuir as `props` restantes em um objeto.  
+Existe uma sintaxe para atribuir as `props` restantes em um objeto.
 Se chama [Paramêtros](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/rest_parameters) e parece assim:
 
 ```jsx
@@ -155,17 +155,17 @@ function Hello({ name, ...restProps }) {
 
 Esses três pontos (`...`) pegam todas a props que falam e atribuem ao paramêtro `restProps`.
 
-Então o que fazer com `restProps` quando você o tem?  
+Então o que fazer com `restProps` quando você o tem?
 Continue lendo...
 
 ---
 
 ## Atributos de spread JSX
 
-Atributos de Spread é uma feature do JSX [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html).  
+Atributos de Spread é uma feature do JSX [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html).
 É uma sintaxe para fornecer as propriedades de um objeto como atributos JSX.
 
-Seguindo o exemplo de [Destructuring props](#desestruturando-props),  
+Seguindo o exemplo de [Destructuring props](#desestruturando-props),
 Podemos fazer  **spread** com `restProps` em nossa `<div>`.
 
 ```jsx
@@ -174,7 +174,7 @@ function Hello({ name, ...restProps }) {
 }
 ```
 
-Isso torna a função `Hello` super flexível.  
+Isso torna a função `Hello` super flexível.
 Podemos passar atributos DOM oara `Hello` e que eles vão ser passados a nossa `div`.
 
 ```jsx
@@ -193,7 +193,7 @@ function Greeting({ name, ...platformProps }) {
 
 ## Mergeando props desestruturadas com outros valores
 
-Componentes são abstrações.  
+Componentes são abstrações.
 Boas abstrações permitem extensão.
 
 Considere esse componente que usa um atributo `class` para estilizar um  `button`.
@@ -212,7 +212,7 @@ Isso funciona muito bem até tentarmos extendê-lo com outra classe.
 
 Nesse caso, `delete-btn` substitui `btn`.
 
-A ordem importa para  [Atributos de spread JSX](#atributos-de-spread-jsx).  
+A ordem importa para  [Atributos de spread JSX](#atributos-de-spread-jsx).
 O `props.className` sendo passado substitui o `className` do nosso componente.
 
 Podemos mudar a ordem, mas agora o `className` **nunca**  vai ser nada além de `btn`.
@@ -223,7 +223,7 @@ function MyButton(props) {
 }
 ```
 
-Precisamos usar a atribuição de desestruturação para obter o  `className` e mergear com o `className` base.  
+Precisamos usar a atribuição de desestruturação para obter o  `className` e mergear com o `className` base.
 Podemos fazer isso simplesmente adicionando todos os valores a uma array e juntando-os com um espaço..
 
 ```jsx
@@ -250,8 +250,8 @@ A melhor abordagem é fazer uso de packages disponíveis, como [classnames](http
 
 ## Renderização Condicional
 
-Você não consegue usar if else em suas declarações de componente..  
-Então pode usar o operador ternário [conditional (ternary) operator](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) ou [short-circuit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-circuit_evaluation) are your friends.
+Você não consegue usar if else em suas declarações de componente..
+Então pode usar o operador ternário [conditional (ternary) operator](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) ou [short-circuit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-circuit_evaluation) são seus amigos.
 
 ### `if`
 
@@ -292,7 +292,7 @@ O React pode imprimir um 0 no seu componente. Quando vem 0 nos seus dados, ele n
 
 ## Tipos de Filho (Children Types)
 
-React consegue renderizar `children` da maioria dos tipos.  
+React consegue renderizar `children` da maioria dos tipos.
 Na maioria dos casos é um `array` ou uma `string`.
 
 ### `String`
@@ -309,7 +309,7 @@ Na maioria dos casos é um `array` ou uma `string`.
 
 ## Array como filho (Array as children)
 
-Prover um array como `children` é muito comum.  
+Prover um array como `children` é muito comum.
 É como as listas são renderizadas no React.
 
 Usamos o método `map()`  para criar um array de elementos React para cada valor da array.
@@ -345,7 +345,7 @@ Porém com o padrão, [render props](#render-prop) conseguimos criar componentes
 
 ## Render prop
 
-Aqui um componete que utiliza render callback.  
+Aqui um componete que utiliza render callback.
 Não é útil, mas é um exemplo fácil para começar.
 
 ```jsx
@@ -440,15 +440,15 @@ return React.Children.only(this.props.children);
 
 ## Componente Proxy
 
-_ (Não tenho certeza se esse nome faz sentido) _
+ *(Não tenho certeza se esse nome faz sentido)*
 
 Os botões estão em todos os lugares nos aplicativos da web. E cada um deles deve ter o atributo `type` definido como `button` .
 ```jsx
 <button type="button">
 ```
 
-Escrever este atributo centenas de vezes pode trazer muitos erros. 
-Podemos escrever um High Level Component para passar `props` para um componente de `button` de nível inferior. 
+Escrever este atributo centenas de vezes pode trazer muitos erros.
+Podemos escrever um High Level Component para passar `props` para um componente de `button` de nível inferior.
 
 ```jsx
 const Button = props =>
@@ -469,7 +469,7 @@ Podemos usar `Button` no lugar `button` e garantir que o atributo `type` vai ser
 
 Esse é um [Proxy component](#proxy-component) aplicado às práticas de estilo.
 
-Então temos um botão. Ele usa classes para serem estilizadas como um botão "principal". 
+Então temos um botão. Ele usa classes para serem estilizadas como um botão "principal".
 
 ```jsx
 <button type="button" className="btn btn-primary">
@@ -605,7 +605,7 @@ const CommentList = ({ comments }) => (
 );
 ```
 
-Podemos criar um novo componente responsável por buscar dados e renderizar o componente `CommentList` 
+Podemos criar um novo componente responsável por buscar dados e renderizar o componente `CommentList`
 
 ```jsx
 class CommentListContainer extends React.Component {
@@ -758,7 +758,7 @@ class ControlledNameInput extends React.Component {
   }
 }
 ```
-Então, mudar o input é uma questão de mudar o estado do componente. 
+Então, mudar o input é uma questão de mudar o estado do componente.
 
 ```jsx
 return (
