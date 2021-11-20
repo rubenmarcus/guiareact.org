@@ -131,46 +131,45 @@ Funciona com Array também.
 let numeros = ["um", "dois"];
 let [um, dois] = numeros;
 ```
-
-Destructuring assignment is used a lot in [function components](#function-component).  
-These component declarations below are equivalent.
+Atribuição via desestruturação (Destructuring assignment) é usado muito em [componentes funcionais](#function-component).  
+Essas declarações de componente são equivalentes.
 
 ```jsx
-function Greeting(props) {
-  return <div>Hi {props.name}!</div>;
+function Hello(props) {
+  return <div>Olá {props.name}!</div>;
 }
 
-function Greeting({ name }) {
-  return <div>Hi {name}!</div>;
+function Hello({ name }) {
+  return <div>Olá {name}!</div>;
 }
 ```
 
-There's a syntax for collecting remaining `props` into an object.  
-It's called [rest parameter syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) and looks like this.
+Existe uma sintaxe para atribuir as `props` restantes em um objeto.  
+Se chama [Paramêtros](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/rest_parameters) e parece assim:
 
 ```jsx
-function Greeting({ name, ...restProps }) {
-  return <div>Hi {name}!</div>;
+function Hello({ name, ...restProps }) {
+  return <div>Olá {name}!</div>;
 }
 ```
 
-Those three dots (`...`) take all the remaining properties and assign them to the object `restProps`.
+Esses três pontos (`...`) pegam todas a props que falam e atribuem ao paramêtro `restProps`.
 
-So, what do you do with `restProps` once you have it?  
-Keep reading...
+Então o que fazer com `restProps` quando você o tem?  
+Continue lendo...
 
 ---
 
 ## Atributos de spread JSX
 
-Spread Attributes is a feature of [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html).  
+Atributos de Spread é uma feature do JSX [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html).  
 It's a syntax for providing an object's properties as JSX attributes.
 
 Following the example from [Destructuring props](#destructuring-props),  
 We can **spread** `restProps` over our `<div>`.
 
 ```jsx
-function Greeting({ name, ...restProps }) {
+function Hello({ name, ...restProps }) {
   return <div {...restProps}>Hi {name}!</div>;
 }
 ```
@@ -252,33 +251,42 @@ The better approach is to make use of available packages, like [classnames](http
 
 ## Renderização Condicional
 
-You can't use if/else statements inside a component declarations.  
-So [conditional (ternary) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) and [short-circuit evaluation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-circuit_evaluation) are your friends.
+Você não consegue usar if else em suas declarações de componente..  
+Então pode usar o operador ternário [conditional (ternary) operator](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) ou [short-circuit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-circuit_evaluation) are your friends.
 
 ### `if`
 
 ```jsx
 {
-  condition && <span>Rendered when `truthy`</span>;
+  !!condition && <span>Irá renderizar quando for `truthy`</span>;
 }
 ```
 
-### `unless`
+Dica não utilize if dessa maneira:
+```jsx
+{
+  condition && <span>Rendereiza quando `truthy`</span>;
+}
+```
+
+O React pode imprimir um 0 no seu componente. Quando vem 0 nos seus dados, ele não considera sua variável como falsa, utilizando o !! , ele converte 0 para falsy
+
+### `unless` (ao menos que)
 
 ```jsx
 {
-  condition || <span>Rendered when `falsy`</span>;
+  condition || <span>Renderizado quando `falsy`</span>;
 }
 ```
 
-### `if-else`
+### `if-else` (Operador Ternãrio)
 
 ```jsx
 {
   condition ? (
-    <span>Rendered when `truthy`</span>
+    <span>Renderizado quando for `truthy`</span>
   ) : (
-    <span>Rendered when `falsy`</span>
+    <span>Renderizado quando for `falsy`</span>
   );
 }
 ```
@@ -333,8 +341,8 @@ This pattern can be combined with destructuring, JSX Spread Attributes, and othe
 
 ## Função como filha (Function as children)
 
-React components don't support functions as `children`.
-However, [render props](#render-prop) is a pattern for creating components that take functions as children.
+Componentes React não suportam funções como `children`.
+Porém com o padrão, [render props](#render-prop) conseguimos criar componentes que tomam funções como  `children` filhas.
 
 ## Renderizando uma prop
 
@@ -506,13 +514,15 @@ This can be a huge boon to style maintenance. It isolates all concerns of style 
 
 ## Switch de Eventos
 
-When writing event handlers it's common to adopt the `handle{eventName}` naming convention.
+Quando criamos Event Handlers (Controladores de Eventos) é comum nomeá-los assim:`handle{eventName}`.
 
 ```jsx
 handleClick(e) { /* do something */ }
 ```
 
-For components that handle several event types, these function names can be repetitive. The names themselves might not provide much value, as they simply proxy to other actions/functions.
+Para componentes que controlam vários tipos de eventos, essas funções podem ser tornar repetitivas.
+os Nomes podem não trazer muito valor, pois na verdade são proxy de outras ações/funções.
+
 
 ```jsx
 handleClick() { require("./actions/doStuff")(/* action stuff */) }
@@ -520,7 +530,7 @@ handleMouseEnter() { this.setState({ hovered: true }) }
 handleMouseLeave() { this.setState({ hovered: false }) }
 ```
 
-Consider writing a single event handler for your component and switching on `event.type`.
+Considere escrever um unico Controlador de eventos e fazer o switch com o `event.type`.
 
 ```jsx
 handleEvent({type}) {
@@ -537,13 +547,13 @@ handleEvent({type}) {
 }
 ```
 
-Alternatively, for simple components, you can call imported actions/functions directly from components, using arrow functions.
+Para componentes simples você pode chamar funções importadas de componentes direto, usando arrow functions.
+
 
 ```jsx
 <div onClick={() => someImportedAction({ action: "DO_STUFF" })}
 ```
 
-Don't fret about performance optimizations until you have problems. Seriously don't.
 
 ##  Componente de Layout
 
@@ -623,21 +633,21 @@ class CommentListContainer extends React.Component {
 
 We can write different containers for different application contexts.
 
-## Higher-order component
+## Higher-order component (Componentes de Ordem Superior)
 
-A [higher-order function](https://en.wikipedia.org/wiki/Higher-order_function) is a function that takes and/or returns a function. It's not more complicated than that. So, what's a higher-order component?
+Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-components.html) é uma função que recebe e / ou retorna uma função. Não é mais complicado do que isso. Então, o que é um componente de ordem superior?
 
 If you're already using [container components](#container-component), these are just generic containers, wrapped up in a function.
 
-Let's start with our `Greeting` component.
+Vamos começar com nosso componente `Hello` .
 
 ```jsx
-const Greeting = ({ name }) => {
+const Hello = ({ name }) => {
   if (!name) {
-    return <div>Connecting...</div>;
+    return <div>Conectando...</div>;
   }
 
-  return <div>Hi {name}!</div>;
+  return <div>Olá {name}!</div>;
 };
 ```
 

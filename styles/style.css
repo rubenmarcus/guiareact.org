@@ -242,3 +242,39 @@ hr {
 .guiaPadroes main > div > h1 {
   display: none;
 }
+
+@media only screen and (max-width: 780px) {
+  code {
+    max-width: 68vw;
+    font-size: 0.6em !important;
+  }
+
+  header {
+    width: 100vw;
+    padding: 12px 5vw;
+  }
+
+  header nav {
+    position: absolute;
+    right: 0px;
+  }
+
+  .guiaPadroes div h1:first-child + p {
+    padding: 25px 5vw;
+  }
+  .guiaPadroes div p:nth-child(3),
+  .guiaPadroes div p:nth-child(4) {
+    padding-left: 5vw;
+  }
+  .guiaPadroes p,
+  .guiaPadroes h2,
+  .guiaPadroes ul,
+  .guiaPadroes pre,
+  .guiaPadroes h3 {
+    padding-left: 5vw;
+  }
+
+  .guiaPadroes ul {
+    padding-left: 15vw;
+  }
+}
