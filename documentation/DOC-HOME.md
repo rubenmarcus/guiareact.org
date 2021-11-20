@@ -47,7 +47,7 @@ Traduções não verificadas, e links não significam que são aprovadas.
 
 ## Elementos
 
-[Elementos](https://reactjs.org/docs/glossary.html#elements) são tudo que está envolvido por <>.
+[Elementos](https://pt-br.reactjs.org/docs/glossary.html#elements) são tudo que está envolvido por <>.
 
 ```jsx
 <div></div>
@@ -58,7 +58,7 @@ Traduções não verificadas, e links não significam que são aprovadas.
 
 ## Componentes
 
-Um [Componente](https://reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
+Um [Componente](https://pt-br.reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
 
 ```jsx
 function MeuComponente() {
@@ -68,7 +68,7 @@ function MeuComponente() {
 
 ## Fragmentos
 
-Um [Componente](https://reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
+Um [Componente](https://pt-br.reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
 
 ```jsx
 function MeuComponente() {
@@ -79,36 +79,36 @@ function MeuComponente() {
 
 ## Expressões
 
-Use curly braces to [embed expressions](https://reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx) in [JSX](https://reactjs.org/docs/glossary.html#jsx).
+Use chaves para  [Incorporar expressões](https://pt-br.reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx) no [JSX](https://pt-br.reactjs.org/docs/glossary.html#jsx).
 
 ```jsx
-function Greeting() {
-  let name = "chantastic";
+function OlaUsuario() {
+  let nome = "Ruben";
 
-  return <div>Hi {name}!</div>;
+  return <div>Olá {nome}!</div>;
 }
 ```
 
 ## Props (Propriedades)
 
-Take `props` as an argument to allow outside customizations of your Component.
+Entenda como `props` como um argumento externo para possibilitar customizações para seu Componente.
 
 ```jsx
-function Greeting(props) {
-  return <div>Hi {props.name}!</div>;
+function DigaOla(props) {
+  return <div>Olá {props.nome}!</div>;
 }
 ```
 
 ## defaultProps (Propriedades Padrão)
 
-Specify default values for `props` with `defaultProps`.
+Especificar valores padrão de `props` com `defaultProps`.
 
 ```jsx
-function Greeting(props) {
-  return <div>Hi {props.name}!</div>;
+function OlaUsuario(props) {
+  return <div>Olá {props.nome}!</div>;
 }
-Greeting.defaultProps = {
-  name: "Guest",
+OlaUsuario.defaultProps = {
+  nome: "Visitante",
 };
 ```
 
@@ -116,22 +116,20 @@ Greeting.defaultProps = {
 
 ## Desestruturando props
 
-[Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) is a JavaScript feature.  
-It was added to the language in ES2015.  
-So it might not look familiar.
+[Atribuição via desestruturação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) é um recurso do  
 
-Think of it like the opposite of literal assignment.
+Foi adicionado a linguagem no ES2015.
 
 ```js
-let person = { name: "chantastic" };
-let { name } = person;
+let usuario = { nome: "Ruben" };
+let { nome } = usuario;
 ```
 
-Works with Arrays too.
+Funciona com Array também.
 
 ```js
-let things = ["one", "two"];
-let [first, second] = things;
+let numeros = ["um", "dois"];
+let [um, dois] = numeros;
 ```
 
 Destructuring assignment is used a lot in [function components](#function-component).  
@@ -165,7 +163,7 @@ Keep reading...
 
 ## Atributos de spread JSX
 
-Spread Attributes is a feature of [JSX](https://reactjs.org/docs/introducing-jsx.html).  
+Spread Attributes is a feature of [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html).  
 It's a syntax for providing an object's properties as JSX attributes.
 
 Following the example from [Destructuring props](#destructuring-props),  
