@@ -12,7 +12,7 @@ export default function PageHead(props) {
       <meta
         key="description"
         name="description"
-        content="React patterns from beginners to advanced developers. Simple examples, short descriptions, and quality advice."
+        content="Guia de Padrões React.Com exemplos e padrões básicos a avançados."
       />
       <link
         href="https://fonts.googleapis.com/css?family=Merriweather:300,300i&display=swap"

@@ -27,21 +27,21 @@ Traduzido para Português e revisado por [@rubenmarcus](https://github.com/ruben
     - [`Array`](#array)
   - [Array como filho (Array as children)](#array-como-filho-array-as-children)
   - [Função como filha (Function as children)](#função-como-filha-function-as-children)
-  - [Renderizando uma prop](#renderizando-uma-prop)
+  - [Render prop](#render-prop)
   - [Passando um Filho (Children)](#passando-um-filho-children)
-  - [Component Proxy](#component-proxy)
+  - [Componente Proxy](#componente-proxy)
   - [Component de estilo](#component-de-estilo)
   - [Switch de Eventos](#switch-de-eventos)
   - [Componente de Layout](#componente-de-layout)
-  - [Componente Container](#componente-container)
-  - [Higher-order component](#higher-order-component)
+  - [Container Components](#container-components)
+  - [Higher-order components](#higher-order-components)
   - [Elevando o State (State Hoisting)](#elevando-o-state-state-hoisting)
-  - [Passando props de Componente filho para  Componente pai](#passando-props-de-componente-filho-para--componente-pai)
   - [Inputs Controlados](#inputs-controlados)
 
 ## Traduções
 
 Traduções não verificadas, e links não significam que são aprovadas.
+
 
 [Chinese](https://reactpatterns.cn)
 
@@ -163,10 +163,10 @@ Continue lendo...
 ## Atributos de spread JSX
 
 Atributos de Spread é uma feature do JSX [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html).  
-It's a syntax for providing an object's properties as JSX attributes.
+É uma sintaxe para fornecer as propriedades de um objeto como atributos JSX.
 
-Following the example from [Destructuring props](#destructuring-props),  
-We can **spread** `restProps` over our `<div>`.
+Seguindo o exemplo de [Destructuring props](#desestruturando-props),  
+Podemos fazer  **spread** com `restProps` em nossa `<div>`.
 
 ```jsx
 function Hello({ name, ...restProps }) {
@@ -174,15 +174,14 @@ function Hello({ name, ...restProps }) {
 }
 ```
 
-This makes `Greeting` super flexible.  
-We can pass DOM attributes to `Greeting` and trust that they'll be passed through to `div`.
+Isso torna a função `Hello` super flexível.  
+Podemos passar atributos DOM oara `Hello` e que eles vão ser passados a nossa `div`.
 
 ```jsx
-<Greeting name="Fancy pants" className="fancy-greeting" id="user-greeting" />
+<Hello name="Fancy pants" className="fancy-greeting" id="user-greeting" />
 ```
 
-Avoid forwarding non-DOM `props` to components.  
-Destructuring assignment is popular because it gives you a way to separate component-specific props from DOM/platform-specific attributes.
+Destructuring assignment é popular porque fornece uma maneira de separar props específicos de componentes de atributos específicos de plataforma / DOM.
 
 ```jsx
 function Greeting({ name, ...platformProps }) {
@@ -194,10 +193,10 @@ function Greeting({ name, ...platformProps }) {
 
 ## Mergeando props desestruturadas com outros valores
 
-Components are abstractions.  
-Good abstractions allow for extension.
+Componentes são abstrações.  
+Boas abstrações permitem extensão.
 
-Consider this component that uses a `class` attribute for style a `button`.
+Considere esse componente que usa um atributo `class` para estilizar um  `button`.
 
 ```jsx
 function MyButton(props) {
@@ -205,18 +204,18 @@ function MyButton(props) {
 }
 ```
 
-This works great until we try to extend it with another class.
+Isso funciona muito bem até tentarmos extendê-lo com outra classe.
 
 ```jsx
 <MyButton className="delete-btn">Delete...</MyButton>
 ```
 
-In this case, `delete-btn` replaces `btn`.
+Nesse caso, `delete-btn` substitui `btn`.
 
-Order matters for [JSX spread attributes](#jsx-spread-attributes).  
-The `props.className` being spread is overriding the `className` in our component.
+A ordem importa para  [Atributos de spread JSX](#atributos-de-spread-jsx).  
+O `props.className` sendo passado substitui o `className` do nosso componente.
 
-We can change the order but now the `className` will **never** be anything but `btn`.
+Podemos mudar a ordem, mas agora o `className` **nunca**  vai ser nada além de `btn`.
 
 ```jsx
 function MyButton(props) {
@@ -224,8 +223,8 @@ function MyButton(props) {
 }
 ```
 
-We need to use destructuring assignment to get the incoming `className` and merge with the base `className`.  
-We can do this simply by adding all values to an array and joining them with a space.
+Precisamos usar a atribuição de desestruturação para obter o  `className` e mergear com o `className` base.  
+Podemos fazer isso simplesmente adicionando todos os valores a uma array e juntando-os com um espaço..
 
 ```jsx
 function MyButton({ className, ...props }) {
@@ -235,7 +234,7 @@ function MyButton({ className, ...props }) {
 }
 ```
 
-To guard from `undefined` showing up as a className, you could update your logic to filter out `falsy` values:
+Para não ter problemas com `undefined` aparecendo no seu className, você pode atualizar sua lógica para pegar valores `falsy`:
 
 ```jsx
 function MyButton({ className, ...props }) {
@@ -245,9 +244,9 @@ function MyButton({ className, ...props }) {
 }
 ```
 
-Bear in mind though that if an empty object is passed it'll be included in the class as well, resulting in: `btn [object Object]`.
+Porém, lembre-se de que, se um objeto vazio for passado, ele também será incluído na classe, resultando em: `btn [object Object]`.
 
-The better approach is to make use of available packages, like [classnames](https://www.npmjs.com/package/classnames) or [clsx](https://www.npmjs.com/package/clsx), that could be used to join classnames, relieving you from having to deal with it manually.
+A melhor abordagem é fazer uso de packages disponíveis, como [classnames](https://www.npmjs.com/package/classnames) ou [clsx](https://www.npmjs.com/package/clsx),que poderia ser usado para unir nomes de classe, evitando que você tenha que lidar com isso manualmente .
 
 ## Renderização Condicional
 
@@ -279,7 +278,7 @@ O React pode imprimir um 0 no seu componente. Quando vem 0 nos seus dados, ele n
 }
 ```
 
-### `if-else` (Operador Ternãrio)
+### `if-else` (Operador Ternário)
 
 ```jsx
 {
@@ -293,8 +292,8 @@ O React pode imprimir um 0 no seu componente. Quando vem 0 nos seus dados, ele n
 
 ## Tipos de Filho (Children Types)
 
-React can render `children` from most types.  
-In most cases it's either an `array` or a `string`.
+React consegue renderizar `children` da maioria dos tipos.  
+Na maioria dos casos é um `array` ou uma `string`.
 
 ### `String`
 
@@ -310,10 +309,10 @@ In most cases it's either an `array` or a `string`.
 
 ## Array como filho (Array as children)
 
-Providing an array as `children` is a very common.  
-It's how lists are drawn in React.
+Prover um array como `children` é muito comum.  
+É como as listas são renderizadas no React.
 
-We use `map()` to create an array of React Elements for every value in the array.
+Usamos o método `map()`  para criar um array de elementos React para cada valor da array.
 
 ```jsx
 <ul>
@@ -323,13 +322,13 @@ We use `map()` to create an array of React Elements for every value in the array
 </ul>
 ```
 
-That's equivalent to providing a literal `array`.
+Esse é o equivalente a renderizar um `array` literal.
 
 ```jsx
 <ul>{[<li>first</li>, <li>second</li>]}</ul>
 ```
 
-This pattern can be combined with destructuring, JSX Spread Attributes, and other components, for some serious terseness.
+Este padrão pode ser combinado com desestruturação, Atributos de Spread JSX e outros componentes, para alguma coesão mais séria.
 
 ```jsx
 <ul>
@@ -344,30 +343,29 @@ This pattern can be combined with destructuring, JSX Spread Attributes, and othe
 Componentes React não suportam funções como `children`.
 Porém com o padrão, [render props](#render-prop) conseguimos criar componentes que tomam funções como  `children` filhas.
 
-## Renderizando uma prop
+## Render prop
 
-Here's a component that uses a render callback.  
-It's not useful, but it's an easy illustration to start with.
+Aqui um componete que utiliza render callback.  
+Não é útil, mas é um exemplo fácil para começar.
 
 ```jsx
 const Width = ({ children }) => children(500);
 ```
 
-The component calls `children` as a function, with some number of arguments. Here, it's the number `500`.
+Esse componente chama `children` como função, com alguns argumentos, nesse caso o número `500`.
 
-To use this component, we give it a [function as `children`](#function-as-children).
+Para usar esse componente estamos utilizando uma [function as `children`](#function-as-children).
 
 ```jsx
 <Width>{(width) => <div>window is {width}</div>}</Width>
 ```
-
-We get this output.
+Recebemos esse output.
 
 ```jsx
-<div>window is 500</div>
+<div>window é 500</div>
 ```
 
-With this setup, we can use this `width` to make rendering decisions.
+Com esta configuração, podemos usar essa prop `width` para fazer decisões de render.
 
 ```jsx
 <Width>
@@ -375,15 +373,14 @@ With this setup, we can use this `width` to make rendering decisions.
 </Width>
 ```
 
-If we plan to use this condition a lot, we can define another components to encapsulate the reused logic.
+Se planejamos usar muito essa condição, podemos definir outros componentes para encapsular a lógica reutilizada.
 
 ```jsx
 const MinWidth = ({ width: minWidth, children }) => (
   <Width>{(width) => (width > minWidth ? children : null)}</Width>
 );
 ```
-
-Obviously a static `Width` component isn't useful but one that watches the browser window is. Here's a sample implementation.
+claro que um componente `Width` estático não é útil, mas aquele que observa o window do navegador é. Aqui está um exemplo de implementação.
 
 ```jsx
 class WindowWidth extends React.Component {
@@ -406,11 +403,11 @@ class WindowWidth extends React.Component {
 }
 ```
 
-Many developers favor [Higher Order Components](#higher-order-component) for this type of functionality. It's a matter of preference.
+Muitos desenvolvedores preferem [Higher Order Components](#higher-order-components) para este tipo de funcionalidade. É uma questão de preferência.
 
 ## Passando um Filho (Children)
 
-You might create a component designed to apply `context` and render its `children`.
+Você pode criar um componente projetado para user `context` e renderizar `children`.
 
 ```jsx
 class SomeContextProvider extends React.Component {
@@ -419,65 +416,66 @@ class SomeContextProvider extends React.Component {
   }
 
   render() {
-    // how best do we return `children`?
+    // como retornamos children?
   }
 }
 ```
 
-You're faced with a decision. Wrap `children` in an extraneous `<div />` or return `children` directly. The first options gives you extra markup (which can break some stylesheets). The second will result in unhelpful errors.
+Você está diante de uma decisão. Envolver os `filhos` em uma ` <div /> `estranha que retorne o  `children`  diretamente. As primeiras opções adicionam marcação extra (que pode quebrar alguns css). O segundo resultará em erros inúteis.
+
 
 ```jsx
 // option 1: extra div
 return <div>{children}</div>;
 
-// option 2: unhelpful errors
+// option 2: erros inúteis
 return children;
 ```
 
-It's best to treat `children` as an opaque data type. React provides `React.Children` for dealing with `children` appropriately.
+É melhor tratar `children`  como um tipo de dados opaco. O React fornece `React.Children` para lidar com  `children`  apropriadamente.
 
 ```jsx
 return React.Children.only(this.props.children);
 ```
 
-## Component Proxy
+## Componente Proxy
 
-_(I'm not sure if this name makes sense)_
+_ (Não tenho certeza se esse nome faz sentido) _
 
-Buttons are everywhere in web apps. And every one of them must have the `type` attribute set to "button".
-
+Os botões estão em todos os lugares nos aplicativos da web. E cada um deles deve ter o atributo `type` definido como `button` .
 ```jsx
 <button type="button">
 ```
 
-Writing this attribute hundreds of times is error prone. We can write a higher level component to proxy `props` to a lower-level `button` component.
+Escrever este atributo centenas de vezes pode trazer muitos erros. 
+Podemos escrever um High Level Component para passar `props` para um componente de `button` de nível inferior. 
 
 ```jsx
 const Button = props =>
   <button type="button" {...props}>
 ```
 
-We can use `Button` in place of `button` and ensure that the `type` attribute is consistently applied everywhere.
+Podemos usar `Button` no lugar `button` e garantir que o atributo `type` vai ser sempre aplicado.
 
 ```jsx
 <Button />
 // <button type="button"><button>
 
-<Button className="CTA">Send Money</Button>
-// <button type="button" class="CTA">Send Money</button>
+<Button className="CTA">Enviar Dinheiro</Button>
+// <button type="button" class="CTA">Enviar Dinheiro</button>
 ```
 
 ## Component de estilo
 
-This is a [Proxy component](#proxy-component) applied to the practices of style.
+Esse é um [Proxy component](#proxy-component) aplicado às práticas de estilo.
 
-Say we have a button. It uses classes to be styled as a "primary" button.
+Então temos um botão. Ele usa classes para serem estilizadas como um botão "principal". 
 
 ```jsx
 <button type="button" className="btn btn-primary">
 ```
 
-We can generate this output using a couple single-purpose components.
+Podemos gerar esse resultado usando alguns componentes de propósito único.
 
 ```jsx
 import classnames from "classnames";
@@ -492,8 +490,7 @@ const Btn = ({ className, primary, ...props }) => (
   />
 );
 ```
-
-It can help to visualize this.
+Pode ajudar a visualizar isso.
 
 ```jsx
 PrimaryBtn()
@@ -502,7 +499,7 @@ PrimaryBtn()
       ↳ '<button type="button" class="btn btn-primary"></button>'
 ```
 
-Using these components, all of these result in the same output.
+Usando esses componentes, todos eles resultam no mesmo resultado.
 
 ```jsx
 <PrimaryBtn />
@@ -510,7 +507,7 @@ Using these components, all of these result in the same output.
 <button type="button" className="btn btn-primary" />
 ```
 
-This can be a huge boon to style maintenance. It isolates all concerns of style to a single component.
+Isso pode ser uma grande vantagem para a manutenção do estilo. Ele isola todas as preocupações de estilo em um único componente.
 
 ## Switch de Eventos
 
@@ -557,9 +554,9 @@ Para componentes simples você pode chamar funções importadas de componentes d
 
 ##  Componente de Layout
 
-Layout components result in some form of static DOM element. It might not need to update frequently, if ever.
+Os componentes de layout resultam em alguma forma de elemento DOM estático. Pode não ser necessário atualizar com frequência, ou nunca.
 
-Consider a component that renders two `children` side-by-side.
+Considere um componente que renderize dois `children` lado a lado
 
 ```jsx
 <HorizontalSplit
@@ -568,9 +565,10 @@ Consider a component that renders two `children` side-by-side.
 />
 ```
 
-We can aggressively optimize this component.
+Podemos otimizar agressivamente esse componente.
 
-While `HorizontalSplit` will be `parent` to both components, it will never be their `owner`. We can tell it to update never, without interrupting the lifecycle of the components inside.
+Embora `HorizontalSplit` seja` pai` para ambos os componentes, nunca será seu `dono`. Podemos dizer para ele nunca atualizar, sem interromper o `lifecycle`  dos componentes internos.
+
 
 ```jsx
 class HorizontalSplit extends React.Component {
@@ -589,11 +587,11 @@ class HorizontalSplit extends React.Component {
 }
 ```
 
-## Componente Container
+## Container Components
 
-"A container does data fetching and then renders its corresponding sub-component. That’s it."&mdash;[Jason Bonta](https://twitter.com/jasonbonta)
+"Um container faz a busca de dados e, em seguida, renderiza seu subcomponente correspondente. É isso."  -  [Jason Bonta](https://twitter.com/jasonbonta)
 
-Given this reusable `CommentList` component.
+Olhando esse componente `CommentList`.
 
 ```jsx
 const CommentList = ({ comments }) => (
@@ -607,7 +605,7 @@ const CommentList = ({ comments }) => (
 );
 ```
 
-We can create a new component responsible for fetching data and rendering the `CommentList` function component.
+Podemos criar um novo componente responsável por buscar dados e renderizar o componente `CommentList` 
 
 ```jsx
 class CommentListContainer extends React.Component {
@@ -630,14 +628,15 @@ class CommentListContainer extends React.Component {
   }
 }
 ```
+Podemos escrever diferentes containers para diferentes contextos de aplicação.
 
-We can write different containers for different application contexts.
 
-## Higher-order component (Componentes de Ordem Superior)
+## Higher-order components
 
-Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-components.html) é uma função que recebe e / ou retorna uma função. Não é mais complicado do que isso. Então, o que é um componente de ordem superior?
+Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-components.html) é uma função que recebe e / ou retorna uma função. Não é mais complicado do que isso. Então, o que é um High Order Component?
 
-If you're already using [container components](#container-component), these are just generic containers, wrapped up in a function.
+
+Se você já estiver usando [componentes container](#container-component), esses são apenas containers genéricos, envolvidos em uma função.
 
 Vamos começar com nosso componente `Hello` .
 
@@ -651,7 +650,7 @@ const Hello = ({ name }) => {
 };
 ```
 
-If it gets `props.name`, it's gonna render that data. Otherwise it'll say that it's "Connecting...". Now for the the higher-order bit.
+Se obtiver `props.name`, ele renderizará esses dados. Caso contrário,irá renderizar que é "Conectando ...". Agora, para o dado de ordem superior.
 
 ```jsx
 const Connect = (ComposedComponent) =>
@@ -672,92 +671,80 @@ const Connect = (ComposedComponent) =>
   };
 ```
 
-This is just a function that returns component that renders the component we passed as an argument.
+Esta é apenas uma função que retorna o componente que renderiza o componente que passamos como um argumento.
 
-Last step, we need to wrap our `Greeting` component in `Connect`.
+Última etapa, precisamos envolver nosso componente `Hello` em` Connect`.
 
 ```jsx
 const ConnectedMyComponent = Connect(Greeting);
 ```
 
-This is a powerful pattern for providing fetching and providing data to any number of [function components](#function-component).
+Este é um padrão poderoso para fazer fetch e fornecer dados para qualquer número de componentes funcionais.
 
-## Elevando o State (State Hoisting)
 
-[function-component](#function-component) don't hold state (as the name implies).
+## Elevando o state (state hoisting)
 
-Events are changes in state.
-Their data needs to be passed to stateful [container components](#container-component) parents.
-
-This is called "state hoisting".
-It's accomplished by passing a callback from a container component to a child component.
+Aqui temos um componente contador, que vai passar seu state para o componente pai
 
 ```jsx
-class NameContainer extends React.Component {
-  render() {
-    return <Name onChange={(newName) => alert(newName)} />;
-  }
+import React, { useState } from "react";
+
+function Counter(props) {
+  const {
+    count: [count, setCount]
+  } = {
+    count: useState(0),
+    ...(props.state || {})
+  };
+
+  return (
+    <div>
+      <h3>{count}</h3>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
 }
-
-const Name = ({ onChange }) => (
-  <input onChange={(e) => onChange(e.target.value)} />
-);
 ```
-
-`Name` receives an `onChange` callback from `NameContainer` and calls on events.
-
-The `alert` above makes for a terse demo but it's not changing state.
-Let's change the internal state of `NameContainer`.
+na nossa função App, escutamos o state através da props state do componente `Counter`
 
 ```jsx
-class NameContainer extends React.Component {
-  constructor() {
-    super();
-    this.state = { name: "" };
-  }
+function App() {
+  const [count, setCount] = useState(0);
 
-  render() {
-    return <Name onChange={(newName) => this.setState({ name: newName })} />;
-  }
+  return (
+    <div className="App">
+      <h2>Estado</h2>
+      <Counter state={{ count: [count, setCount] }} />
+    </div>
+  );
 }
 ```
 
-The state is _hoisted_ to the container, by the provided callback, where it's used to update local state.
-This sets a nice clear boundary and maximizes the re-usability of function component.
+na teoria poderiamos passar esse estado do componente filho, para qualquer outro componente irmão dele.
 
-This pattern isn't limited to function components.
-Because function components don't have lifecycle events,
-you'll use this pattern with component classes as well.
-
-_[Controlled input](#controlled-input) is an important pattern to know for use with state hoisting_
-
-_(It's best to process the event object on the stateful component)_
-
-
-## Passando props de Componente filho para  Componente pai
-Lorem Ipsum
 
 ## Inputs Controlados
 
-It's hard to talk about controlled inputs in the abstract.
-Let's start with an uncontrolled (normal) input and go from there.
+É difícil falar sobre inputs controlados em abstrato.
+Vamos começar com um input não controlado (normal) e partir daí.
 
 ```jsx
 <input type="text" />
 ```
 
-When you fiddle with this input in the browser, you see your changes.
-This is normal.
+Quando você mexe com esse input no navegador, você vê suas alterações.
+Isto é o normal.
 
-A controlled input disallows the DOM mutations that make this possible.
-You set the `value` of the input in component-land and it doesn't change in DOM-land.
+Um input controlado  desabilita as mutações do DOM que tornam isso possível.
+Você seta o `value` do input no escopo do Componente e ele não altera no escopo do DOM.
 
 ```jsx
 <input type="text" value="This won't change. Try it." />
 ```
 
-Obviously static inputs aren't very useful to your users.
-So, we derive a `value` from state.
+Obviamente, os inputs estáticos não são muito úteis para seus usuários.
+Então derivamos o `value` do state.
 
 ```jsx
 class ControlledNameInput extends React.Component {
@@ -771,8 +758,7 @@ class ControlledNameInput extends React.Component {
   }
 }
 ```
-
-Then, changing the input is a matter of changing component state.
+Então, mudar o input é uma questão de mudar o estado do componente. 
 
 ```jsx
 return (
@@ -782,10 +768,10 @@ return (
   />
 );
 ```
+Esta é um input controlado.
+Ele apenas atualiza o DOM quando o estado é alterado em nosso componente.
+Isso é inestimável ao criar interfaces de usuário consistentes.
 
-This is a controlled input.
-It only updates the DOM when state has changed in our component.
-This is invaluable when creating consistent UIs.
+_Se está usando componentes funcionais para elementos de form,
+leia sobre [state hoisting](#state-hoisting) para mover o state do componente acima no tree._
 
-_If you're using [function components](#function-component) for form elements,
-read about using [state hoisting](#state-hoisting) to move new state up the component tree._
