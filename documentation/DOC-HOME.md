@@ -220,8 +220,8 @@ function Olá({ name, ...restProps }) {
 }
 ```
 
-Isso torna a função `Hello` super flexível.
-Podemos passar atributos DOM para `Hello` e que eles vão ser passados a nossa `div`.
+Isso torna a função `Olá` super flexível.
+Podemos passar atributos DOM para `Olá` e que eles vão ser passados a nossa `div`.
 
 ```jsx
 <Olá name="Fancy pants" className="fancy-greeting" id="user-greeting" />
@@ -606,16 +606,16 @@ Embora `HorizontalSplit` seja `pai` para ambos os componentes, nunca será seu `
 
 
 ```jsx
-function HorizontalSplit() {
+const HorizontalSplit = ({ startSide, endSide }) => {
   return (
     <FlexContainer>
-      <div>{this.props.startSide}</div>
-      <div>{this.props.endSide}</div>
+      <div>{startSide}</div>
+      <div>{endSide}</div>
     </FlexContainer>
   );
 }
 
-export default React.memo(HorizontalSplit);
+export default memo(HorizontalSplit);
 ```
 
 ## Container Components
@@ -678,7 +678,7 @@ const Hello = ({ name }) => {
 };
 ```
 
-Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar que é "Conectando ...". 
+Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar "Conectando ...". 
 
 Agora, para o dado de ordem superior.
 
