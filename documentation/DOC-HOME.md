@@ -569,24 +569,20 @@ Considere um componente que renderize dois `children` lado a lado
 
 Podemos otimizar agressivamente esse componente.
 
-Embora `HorizontalSplit` seja` pai` para ambos os componentes, nunca será seu `dono`. Podemos dizer para ele nunca atualizar, sem interromper o `lifecycle`  dos componentes internos.
+Embora `HorizontalSplit` seja `pai` para ambos os componentes, nunca será seu `dono`. Podemos dizer para ele nunca atualizar, sem interromper o `lifecycle`  dos componentes internos.
 
 
 ```jsx
-class HorizontalSplit extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-
-  render() {
-    return (
-      <FlexContainer>
-        <div>{this.props.startSide}</div>
-        <div>{this.props.endSide}</div>
-      </FlexContainer>
-    );
-  }
+function HorizontalSplit(props){
+  return (
+    <FlexContainer>
+      <div>{props.startSide}</div>
+      <div>{props.endSide}</div>
+    </FlexContainer>
+  );
 }
+
+export default memo(HorizontalSplit);
 ```
 
 ## Container Components
@@ -640,7 +636,7 @@ Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-componen
 
 Se você já estiver usando [componentes container](#container-component), esses são apenas containers genéricos, envolvidos em uma função.
 
-Vamos começar com nosso componente `Hello` .
+Vamos começar com nosso componente `Hello`.
 
 ```jsx
 const Hello = ({ name }) => {
@@ -652,7 +648,7 @@ const Hello = ({ name }) => {
 };
 ```
 
-Se obtiver `props.name`, ele renderizará esses dados. Caso contrário,irá renderizar que é "Conectando ...". Agora, para o dado de ordem superior.
+Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar "Conectando ...". Agora, para o dado de ordem superior.
 
 ```jsx
 const Connect = (ComposedComponent) =>
@@ -750,7 +746,7 @@ Então derivamos o `value` do state.
 
 ```jsx
 function ControlledNameInput () {
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
 
   return <input type="text" value={name} />;
 }
