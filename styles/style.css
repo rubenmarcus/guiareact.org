@@ -64,6 +64,10 @@ header a:hover {
   padding-left: 85px;
 }
 
+h2#conteúdo {
+  margin-top: 3vw;
+}
+
 .guiaPadroes div p:nth-child(5) {
   margin-top: 0px;
   padding-bottom: 20px;
