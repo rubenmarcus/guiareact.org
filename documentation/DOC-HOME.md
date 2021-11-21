@@ -68,16 +68,48 @@ function MeuComponente() {
 }
 ```
 
+---
+
 ## Fragmentos
 
-Um [Componente](https://pt-br.reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
+Os [Fragmentos](https://pt-br.reactjs.org/docs/fragments.html) permitem agrupar uma lista de filhos sem adicionar nós extras ao DOM.
 
 ```jsx
 function MeuComponente() {
-  return <div>Olá Mundo</div>;
+  return (
+    <React.Fragment>
+      <div>Olá</div>
+      <div>Mundo</div>
+    </React.Fragment>
+  );
 }
 ```
 
+Isto renderizará no DOM apenas os seguintes elementos:
+
+```html
+<body>
+  <div>Olá</div>
+  <div>Mundo</div>
+</body>
+```
+
+### Sintaxe Curta
+
+Existe uma sintaxe nova e mais curta que você pode utilizar para declarar fragmentos. Parecem tags vazias:
+
+```jsx
+function MeuComponente() {
+  return (
+    <>
+      <div>Olá</div>
+      <div>Mundo</div>
+    </>
+  );
+}
+```
+
+---
 
 ## Expressões
 
