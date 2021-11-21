@@ -6,6 +6,8 @@ Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](
 
 Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 
+com Contribuição de  [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo)
+
 ## Conteúdo
 
   - [Traduções](#traduções)
