@@ -56,12 +56,17 @@ header a:hover {
   font-weight: 600;
 }
 .guiaPadroes div p:nth-child(3),
-.guiaPadroes div p:nth-child(4) {
+.guiaPadroes div p:nth-child(4),.guiaPadroes div p:nth-child(5) {
   background: #fff;
   font-weight: 400;
   font-size: 16px;
   width: 100%;
   padding-left: 85px;
+}
+
+.guiaPadroes div p:nth-child(5) {
+  margin-top: 0px;
+  padding-bottom: 20px;
 }
 .guiaPadroes div p:nth-child(4) {
   margin: 0;
