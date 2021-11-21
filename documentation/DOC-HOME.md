@@ -72,7 +72,7 @@ function MeuComponente() {
 
 ## Fragmentos
 
-Um [Fragmento](https://pt-br.reactjs.org/docs/fragments.html) permitem agrupar uma lista de filhos sem adicionar nós extras ao DOM.
+Um [Fragmento](https://pt-br.reactjs.org/docs/fragments.html) permite agrupar uma lista de filhos sem adicionar nós extras ao DOM.
 
 ```jsx
 function MeuComponente() {
@@ -97,7 +97,7 @@ Isto renderizará no DOM apenas os seguintes elementos:
 
 ### Sintaxe Curta
 
-Existe uma sintaxe nova e mais curta que você pode utilizar para declarar fragmentos. Parecem tags vazias:
+Existe uma sintaxe nova e mais curta que você pode utilizar para declarar fragmentos. São as tags vazias:
 
 ```jsx
 function MeuComponente() {
@@ -109,7 +109,6 @@ function MeuComponente() {
   );
 }
 ```
-
 
 ## Expressões
 
