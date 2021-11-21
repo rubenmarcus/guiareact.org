@@ -146,6 +146,18 @@ OlaUsuario.defaultProps = {
 };
 ```
 
+## Default function parameters (parâmetros predefinidos de uma função)
+
+Especificar valores padrão de `props` com `default function parameters`.
+Os parâmetros predefinidos de uma função permitem que parâmetros regulares sejam inicializados com valores iniciais caso `undefined` ou nenhum valor seja passado.
+
+```jsx
+// Utilizamos aqui uma desestruturação no objeto `props` para pegarmos a prop `nome`
+function OlaUsuario({ nome = "Visitante" }) {
+  return <div>Olá {nome}!</div>;
+}
+```
+
 ---
 
 ## Desestruturando props
