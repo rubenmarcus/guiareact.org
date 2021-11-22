@@ -683,22 +683,16 @@ Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá ren
 Agora, para o dado de ordem superior.
 
 ```jsx
-const Connect = (ComposedComponent) =>
-  class extends React.Component {
-    constructor() {
-      super();
-      this.state = { name: "" };
-    }
+const Connect = (ComposedComponent) => {
+  const [name, setName] = useState("");
 
-    componentDidMount() {
-      // this would fetch or connect to a store
-      this.setState({ name: "Michael" });
-    }
+  useEffect(() => {
+    // Isso seria um "fetch" ou uma conexão com a "store"
+    setName("Michael");
+  }, []);
 
-    render() {
-      return <ComposedComponent {...this.props} name={this.state.name} />;
-    }
-  };
+  return <ComposedComponent {...props} name={name} />;
+};
 ```
 
 Esta é apenas uma função que retorna o componente que renderiza o componente que passamos como um argumento.
