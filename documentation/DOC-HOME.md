@@ -687,6 +687,7 @@ const Connect = (ComposedComponent) => {
   const [name, setName] = useState("");
 
   useEffect(() => {
+    // Isso seria um "fetch" ou uma conexão com a "store"
     setName("Michael");
   }, []);
 
