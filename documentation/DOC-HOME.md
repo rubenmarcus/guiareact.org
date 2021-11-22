@@ -208,9 +208,9 @@ Seguindo o exemplo de [Destructuring props](#desestruturando-props),
 Podemos fazer **spread** com `restProps` em nossa `<div>`.
 
 ```jsx
-const Ola({ name, ...restProps }) {
+const Ola = ({ name, ...restProps }) => {
   return <div {...restProps}>Hi {name}!</div>;
-}
+};
 ```
 
 Isso torna a função `Ola` super flexível.
