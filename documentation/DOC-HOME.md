@@ -213,6 +213,7 @@ const Ola = ({ name, ...restProps }) => {
 };
 ```
 
+
 Isso torna a função `Ola` super flexível.
 Podemos passar atributos DOM para `Ola` e que eles vão ser passados a nossa `div`.
 
@@ -606,16 +607,16 @@ Podemos otimizar agressivamente esse componente.
 Embora `HorizontalSplit` seja `pai` para ambos os componentes, nunca será seu `dono`. Podemos dizer para ele nunca atualizar, sem interromper o `lifecycle` dos componentes internos.
 
 ```jsx
-function HorizontalSplit() {
+const HorizontalSplit = ({ startSide, endSide }) => {
   return (
     <FlexContainer>
-      <div>{this.props.startSide}</div>
-      <div>{this.props.endSide}</div>
+      <div>{startSide}</div>
+      <div>{endSide}</div>
     </FlexContainer>
   );
 }
 
-export default React.memo(HorizontalSplit);
+export default memo(HorizontalSplit);
 ```
 
 ## Container Components
@@ -664,7 +665,9 @@ Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-componen
 
 Se você já estiver usando [componentes container](#container-component), esses são apenas containers genéricos, envolvidos em uma função.
 
+
 Vamos começar com nosso componente `Ola` .
+
 
 ```jsx
 const Ola = ({ name }) => {
@@ -676,7 +679,10 @@ const Ola = ({ name }) => {
 };
 ```
 
-Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar que é "Conectando ...".
+
+Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar "Conectando ...". 
+
+
 
 Agora, para o dado de ordem superior.
 
@@ -769,7 +775,9 @@ Obviamente, os inputs estáticos não são muito úteis para seus usuários.
 Então derivamos o `value` do state.
 
 ```jsx
-function ControlledNameInput() {
+
+function ControlledNameInput () {
+
   const [name, setName] = useState("");
 
   return <input type="text" value={name} />;
