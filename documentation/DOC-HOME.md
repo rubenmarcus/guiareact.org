@@ -6,41 +6,41 @@ Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](
 
 Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 
-com Contribuição de [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo), [@luizwbr](https://github.com/luizwbr), [@arimariojesus](https://github.com/arimariojesus), [@gabepinheiro](https://github.com/gabepinheiro)
+com Contribuição de [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo), [@luizwbr](https://github.com/luizwbr), [@arimariojesus](https://github.com/arimariojesus), [@gabepinheiro](https://github.com/gabepinheiro),, [@GusttavoCastilho](https://github.com/GusttavoCastilho)
 
 ## Conteúdo
 
-  - [Traduções](#traduções)
-  - [Elementos](#elementos)
-  - [Componentes](#componentes)
-  - [Fragmentos](#fragmentos)
-    - [Sintaxe curta](#sintaxe-curta)
-    - [Exemplo com lista de componentes](#exemplo-com-lista-de-componentes)
-  - [Expressões](#expressões)
-  - [Props (Propriedades)](#props-propriedades)
-  - [defaultProps (Propriedades Padrão)](#defaultprops-propriedades-padrão)
-  - [Desestruturando props](#desestruturando-props)
-  - [Atributos de spread JSX](#atributos-de-spread-jsx)
-  - [Mergeando props desestruturadas com outros valores](#mergeando-props-desestruturadas-com-outros-valores)
-  - [Renderização Condicional](#renderização-condicional)
-    - [`if`](#if)
-    - [`unless` (ao menos que)](#unless-ao-menos-que)
-    - [`if-else` (Operador Ternário)](#if-else-operador-ternário)
-  - [Tipos de filhos (Children Types)](#tipos-de-filhos-children-types)
-    - [`String`](#string)
-    - [`Array`](#array)
-  - [Array como filho (Array as children)](#array-como-filho-array-as-children)
-  - [Função como filha (Function as children)](#função-como-filha-function-as-children)
-  - [Render prop](#render-prop)
-  - [Passando um Filho (Children)](#passando-um-filho-children)
-  - [Componente Proxy](#componente-proxy)
-  - [Estilizando componentes](#estilizando-componentes)
-  - [Switch de Eventos](#switch-de-eventos)
-  - [Componente de Layout](#componente-de-layout)
-  - [Container Components](#container-components)
-  - [Higher-order components](#higher-order-components)
-  - [Elevando o state (state hoisting)](#elevando-o-state-state-hoisting)
-  - [Inputs Controlados](#inputs-controlados)
+- [Traduções](#traduções)
+- [Elementos](#elementos)
+- [Componentes](#componentes)
+- [Fragmentos](#fragmentos)
+  - [Sintaxe curta](#sintaxe-curta)
+  - [Exemplo com lista de componentes](#exemplo-com-lista-de-componentes)
+- [Expressões](#expressões)
+- [Props (Propriedades)](#props-propriedades)
+- [defaultProps (Propriedades Padrão)](#defaultprops-propriedades-padrão)
+- [Desestruturando props](#desestruturando-props)
+- [Atributos de spread JSX](#atributos-de-spread-jsx)
+- [Mergeando props desestruturadas com outros valores](#mergeando-props-desestruturadas-com-outros-valores)
+- [Renderização Condicional](#renderização-condicional)
+  - [`if`](#if)
+  - [`unless` (ao menos que)](#unless-ao-menos-que)
+  - [`if-else` (Operador Ternário)](#if-else-operador-ternário)
+- [Tipos de filhos (Children Types)](#tipos-de-filhos-children-types)
+  - [`String`](#string)
+  - [`Array`](#array)
+- [Array como filho (Array as children)](#array-como-filho-array-as-children)
+- [Função como filha (Function as children)](#função-como-filha-function-as-children)
+- [Render prop](#render-prop)
+- [Passando um Filho (Children)](#passando-um-filho-children)
+- [Componente Proxy](#componente-proxy)
+- [Estilizando componentes](#estilizando-componentes)
+- [Switch de Eventos](#switch-de-eventos)
+- [Componente de Layout](#componente-de-layout)
+- [Container Components](#container-components)
+- [Higher-order components](#higher-order-components)
+- [Elevando o state (state hoisting)](#elevando-o-state-state-hoisting)
+- [Inputs Controlados](#inputs-controlados)
 
 ## Traduções
 
@@ -69,7 +69,6 @@ function MeuComponente() {
 }
 ```
 
-
 ## Fragmentos
 
 Um [Fragmento](https://pt-br.reactjs.org/docs/fragments.html) permite agrupar uma lista de filhos sem adicionar nós extras ao DOM.
@@ -84,7 +83,6 @@ function MeuComponente() {
   );
 }
 ```
-
 
 Isto renderizará no DOM apenas os seguintes elementos:
 
@@ -176,26 +174,21 @@ Funciona com Array também.
 const numeros = ["um", "dois"];
 const [um, dois] = numeros;
 ```
+
 Atribuição via desestruturação (Destructuring assignment) é usado muito em [componentes funcionais](#function-component).
 Essas declarações de componente são equivalentes.
 
 ```jsx
-function Olá(props) {
-  return <div>Olá {props.name}!</div>;
-}
+const Ola = (props) => <div>Olá {props.name}!</div>;
 
-function Olá({ name }) {
-  return <div>Olá {name}!</div>;
-}
+const Ola = ({ name }) => <div>Olá {name}!</div>;
 ```
 
 Existe uma sintaxe para atribuir as `props` restantes em um objeto.
 Se chama [Parâmetros](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/rest_parameters) e parece assim:
 
 ```jsx
-function Olá({ name, ...restProps }) {
-  return <div>Olá {name}!</div>;
-}
+const Ola = ({ name, ...restProps }) => <div>Olá {name}!</div>;
 ```
 
 Esses três pontos (`...`) pegam todas a props que faltam e atribuem ao parâmetro `restProps`.
@@ -215,16 +208,16 @@ Seguindo o exemplo de [Destructuring props](#desestruturando-props),
 Podemos fazer **spread** com `restProps` em nossa `<div>`.
 
 ```jsx
-function Olá({ name, ...restProps }) {
+const Ola = ({ name, ...restProps }) => {
   return <div {...restProps}>Hi {name}!</div>;
-}
+};
 ```
 
-Isso torna a função `Hello` super flexível.
-Podemos passar atributos DOM para `Hello` e que eles vão ser passados a nossa `div`.
+Isso torna a função `Ola` super flexível.
+Podemos passar atributos DOM para `Ola` e que eles vão ser passados a nossa `div`.
 
 ```jsx
-<Olá name="Fancy pants" className="fancy-greeting" id="user-greeting" />
+<Ola name="Fancy pants" className="fancy-greeting" id="user-greeting" />
 ```
 
 Atribuição via desestruturação é popular porque fornece uma maneira de separar props específicas de componentes, de atributos específicos de plataforma / DOM.
@@ -242,7 +235,7 @@ function Greeting({ name, ...platformProps }) {
 Componentes são abstrações.
 Boas abstrações permitem extensão.
 
-Considere esse componente que usa um atributo `class` para estilizar um  `button`.
+Considere esse componente que usa um atributo `class` para estilizar um `button`.
 
 ```jsx
 function MyButton(props) {
@@ -261,7 +254,7 @@ Nesse caso, `delete-btn` substitui `btn`.
 A ordem importa para [Atributos de spread JSX](#atributos-de-spread-jsx).
 O `props.className` sendo passado, substitui o `className` do nosso componente.
 
-Podemos mudar a ordem, mas agora o `className` **nunca**  vai ser nada além de `btn`.
+Podemos mudar a ordem, mas agora o `className` **nunca** vai ser nada além de `btn`.
 
 ```jsx
 function MyButton(props) {
@@ -308,6 +301,7 @@ Então vocês pode usar o operador ternário [conditional (ternary) operator](ht
 ```
 
 Dica não utilize if dessa maneira:
+
 ```jsx
 {
   condition && <span>Renderiza quando `verdadeiro`</span>;
@@ -358,7 +352,7 @@ Na maioria dos casos é um `array` ou uma `string`.
 Prover um array como `children` é muito comum.
 É como as listas são renderizadas no React.
 
-Usamos o método `map()`  para criar um array de elementos React para cada valor da array.
+Usamos o método `map()` para criar um array de elementos React para cada valor da array.
 
 ```jsx
 <ul>
@@ -387,7 +381,7 @@ Este padrão pode ser combinado com desestruturação, Atributos de Spread JSX e
 ## Função como filha (Function as children)
 
 Componentes React não suportam funções como `children`.
-Porém com o padrão, [render props](#render-prop) conseguimos criar componentes que tomam funções como  `children` filhas.
+Porém com o padrão, [render props](#render-prop) conseguimos criar componentes que tomam funções como `children` filhas.
 
 ## Render prop
 
@@ -405,6 +399,7 @@ Para usar esse componente estamos utilizando uma [Função como filha (Function 
 ```jsx
 <Width>{(width) => <div>window é {width}</div>}</Width>
 ```
+
 Recebemos esse output.
 
 ```jsx
@@ -415,7 +410,9 @@ Com esta configuração, podemos usar essa prop `width` para fazer decisões de 
 
 ```jsx
 <Width>
-  {(width) => (width > 600 ? <div>condição de largura mínima atingida!</div> : null)}
+  {(width) =>
+    width > 600 ? <div>condição de largura mínima atingida!</div> : null
+  }
 </Width>
 ```
 
@@ -426,6 +423,7 @@ const MinWidth = ({ width: minWidth, children }) => (
   <Width>{(width) => (width > minWidth ? children : null)}</Width>
 );
 ```
+
 Claro que um componente `Width` estático não é útil, mas aquele que observa o window do navegador é. Aqui está um exemplo de implementação.
 
 ```jsx
@@ -461,8 +459,7 @@ class SomeContextProvider extends React.Component {
 }
 ```
 
-Você está diante de uma decisão. Envolver os `filhos` em uma `<div />` estranha que retorne o  `children` diretamente. As primeiras opções adicionam marcação extra (que pode quebrar alguns css). O segundo resultará em erros inúteis.
-
+Você está diante de uma decisão. Envolver os `filhos` em uma `<div />` estranha que retorne o `children` diretamente. As primeiras opções adicionam marcação extra (que pode quebrar alguns css). O segundo resultará em erros inúteis.
 
 ```jsx
 // option 1: extra div
@@ -480,9 +477,10 @@ return React.Children.only(this.props.children);
 
 ## Componente Proxy
 
- *(Não tenho certeza se esse nome faz sentido)*
+_(Não tenho certeza se esse nome faz sentido)_
 
 Os botões estão em todos os lugares nos aplicativos da web. E cada um deles deve ter o atributo `type` definido como `button` .
+
 ```jsx
 <button type="button">
 ```
@@ -530,6 +528,7 @@ const Btn = ({ className, primary, ...props }) => (
   />
 );
 ```
+
 Pode ajudar a visualizar isso.
 
 ```jsx
@@ -556,6 +555,7 @@ Quando criamos Event Handlers (Controladores de Eventos) é comum nomeá-los ass
 ```jsx
 handleClick(e) { /* do something */ }
 ```
+
 Para componentes que controlam vários tipos de eventos, essas funções podem ser tornar repetitivas.
 os nomes podem não trazer muito valor, pois na verdade são proxy de outras ações/funções.
 
@@ -581,13 +581,14 @@ handleEvent({type}) {
   }
 }
 ```
+
 Para componentes simples você pode chamar funções importadas de componentes direto, usando arrow functions.
 
 ```jsx
 <div onClick={() => someImportedAction({ action: "DO_STUFF" })}
 ```
 
-##  Componente de Layout
+## Componente de Layout
 
 Os componentes de layout resultam em alguma forma de elemento DOM estático. Pode não ser necessário atualizar com frequência, ou nunca.
 
@@ -604,7 +605,6 @@ Podemos otimizar agressivamente esse componente.
 
 Embora `HorizontalSplit` seja `pai` para ambos os componentes, nunca será seu `dono`. Podemos dizer para ele nunca atualizar, sem interromper o `lifecycle` dos componentes internos.
 
-
 ```jsx
 function HorizontalSplit() {
   return (
@@ -620,7 +620,7 @@ export default React.memo(HorizontalSplit);
 
 ## Container Components
 
-"Um container faz a busca de dados e, em seguida, renderiza seu subcomponente correspondente. É isso."  -  [Jason Bonta](https://twitter.com/jasonbonta)
+"Um container faz a busca de dados e, em seguida, renderiza seu subcomponente correspondente. É isso." - [Jason Bonta](https://twitter.com/jasonbonta)
 
 Olhando esse componente `CommentList`.
 
@@ -639,7 +639,7 @@ const CommentList = ({ comments }) => (
 Podemos criar um novo componente responsável por buscar dados e renderizar o componente `CommentList`
 
 ```jsx
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 
 function CommentListContainer() {
   const [comments, setComments] = useState([]);
@@ -647,17 +647,15 @@ function CommentListContainer() {
   useEffect(() => {
     $.ajax({
       url: "/my-comments.json",
-      dataType: 'json',
-      success: myComments =>
-        setComments(myComments)
-    })
+      dataType: "json",
+      success: (myComments) => setComments(myComments),
+    });
   }, []);
 
-  return(
-    <CommentList comments={comments} />
-  );
+  return <CommentList comments={comments} />;
 }
 ```
+
 Podemos escrever diferentes containers para diferentes contextos de aplicação.
 
 ## Higher-order components
@@ -666,10 +664,10 @@ Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-componen
 
 Se você já estiver usando [componentes container](#container-component), esses são apenas containers genéricos, envolvidos em uma função.
 
-Vamos começar com nosso componente `Hello` .
+Vamos começar com nosso componente `Ola` .
 
 ```jsx
-const Hello = ({ name }) => {
+const Ola = ({ name }) => {
   if (!name) {
     return <div>Conectando...</div>;
   }
@@ -678,7 +676,7 @@ const Hello = ({ name }) => {
 };
 ```
 
-Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar que é "Conectando ...". 
+Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar que é "Conectando ...".
 
 Agora, para o dado de ordem superior.
 
@@ -697,10 +695,10 @@ const Connect = (ComposedComponent) => {
 
 Esta é apenas uma função que retorna o componente que renderiza o componente que passamos como um argumento.
 
-Última etapa, precisamos envolver nosso componente `Hello` em `Connect`.
+Última etapa, precisamos envolver nosso componente `Ola` em `Connect`.
 
 ```jsx
-const ConnectedMyComponent = Connect(Greeting);
+const ConnectedMyComponent = Connect(Ola);
 ```
 
 Este é um padrão poderoso para fazer requisições ( fetch ) e fornecer dados para qualquer número de componentes funcionais.
@@ -714,10 +712,10 @@ import React, { useState } from "react";
 
 function Counter(props) {
   const {
-    count: [count, setCount]
+    count: [count, setCount],
   } = {
     count: useState(0),
-    ...(props.state || {})
+    ...(props.state || {}),
   };
 
   return (
@@ -729,6 +727,7 @@ function Counter(props) {
   );
 }
 ```
+
 na nossa função App, escutamos o state através da props state do componente `Counter`
 
 ```jsx
@@ -770,27 +769,24 @@ Obviamente, os inputs estáticos não são muito úteis para seus usuários.
 Então derivamos o `value` do state.
 
 ```jsx
-function ControlledNameInput () {
-  const [name, setName] = useState("")
+function ControlledNameInput() {
+  const [name, setName] = useState("");
 
   return <input type="text" value={name} />;
 }
 ```
+
 Então, mudar o input é uma questão de mudar o estado do componente.
 
 ```jsx
 return (
-  <input
-    type="text"
-    value={name}
-    onChange={(e) => setName(e.target.value)}
-  />
+  <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
 );
 ```
+
 Este é um input controlado.
 Ele apenas atualiza o DOM quando o estado é alterado em nosso componente.
 Isso é inestimável ao criar interfaces de usuário consistentes.
 
 _Se está usando componentes funcionais para elementos de form,
 leia sobre [state hoisting](#state-hoisting) para mover o state do componente acima no tree._
-
