@@ -6,7 +6,7 @@ Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](
 
 Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 
-com Contribuição de [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo), [@luizwbr](https://github.com/luizwbr), [@arimariojesus](https://github.com/arimariojesus), [@gabepinheiro](https://github.com/gabepinheiro),, [@GusttavoCastilho](https://github.com/GusttavoCastilho)
+com contribuição de [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo), [@luizwbr](https://github.com/luizwbr), [@arimariojesus](https://github.com/arimariojesus), [@gabepinheiro](https://github.com/gabepinheiro) e [@GusttavoCastilho](https://github.com/GusttavoCastilho).
 
 ## Conteúdo
 
@@ -61,7 +61,7 @@ Traduções não verificadas, e links não significam que são aprovadas.
 
 ## Componentes
 
-Um [Componente](https://pt-br.reactjs.org/docs/glossary.html#components) é defindo por uma função que declarada retorna um [Elemento](#elementos) React .
+Um [Componente](https://pt-br.reactjs.org/docs/glossary.html#components) é definido por uma função que declarada retorna um [Elemento](#elementos) React.
 
 ```jsx
 function MeuComponente() {
@@ -122,7 +122,7 @@ function OlaUsuario() {
 
 ## Props (Propriedades)
 
-Entenda como `props` como um argumento externo para possibilitar customizações para seu Componente.
+Entenda como `props` como um argumento externo para possibilitar customizações para seu componente.
 
 ```jsx
 function DigaOla(props) {
@@ -213,7 +213,6 @@ const Ola = ({ name, ...restProps }) => {
 };
 ```
 
-
 Isso torna a função `Ola` super flexível.
 Podemos passar atributos DOM para `Ola` e que eles vão ser passados a nossa `div`.
 
@@ -244,7 +243,7 @@ function MyButton(props) {
 }
 ```
 
-Isso funciona muito bem até tentarmos extendê-lo com outra classe.
+Isso funciona muito bem até tentarmos estendê-lo com outra classe.
 
 ```jsx
 <MyButton className="delete-btn">Delete...</MyButton>
@@ -286,7 +285,7 @@ function MyButton({ className, ...props }) {
 
 Porém, lembre-se de que, se um objeto vazio for passado, ele também será incluído na classe, resultando em: `btn [object Object]`.
 
-A melhor abordagem é fazer uso de packages disponíveis, como [classnames](https://www.npmjs.com/package/classnames) ou [clsx](https://www.npmjs.com/package/clsx),que poderia ser usado para unir nomes de classe, evitando que você tenha que lidar com isso manualmente .
+A melhor abordagem é fazer uso de packages disponíveis, como [classnames](https://www.npmjs.com/package/classnames) ou [clsx](https://www.npmjs.com/package/clsx),que poderia ser usado para unir nomes de classe, evitando que você tenha que lidar com isso manualmente.
 
 ## Renderização Condicional
 
@@ -665,9 +664,7 @@ Uma [higher-order function](https://pt-br.reactjs.org/docs/higher-order-componen
 
 Se você já estiver usando [componentes container](#container-component), esses são apenas containers genéricos, envolvidos em uma função.
 
-
 Vamos começar com nosso componente `Ola` .
-
 
 ```jsx
 const Ola = ({ name }) => {
@@ -679,10 +676,7 @@ const Ola = ({ name }) => {
 };
 ```
 
-
-Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar "Conectando ...". 
-
-
+Se obtiver `props.name`, ele renderizará esses dados. Caso contrário, irá renderizar "Conectando ...".
 
 Agora, para o dado de ordem superior.
 
@@ -765,7 +759,7 @@ Quando você mexe com esse input no navegador, você vê suas alterações.
 Isto é o normal.
 
 Um input controlado desabilita as mutações do DOM que tornam isso possível.
-Você seta o `value` do input no escopo do Componente e ele não altera no escopo do DOM.
+Você seta o `value` do input no escopo do componente e ele não altera no escopo do DOM.
 
 ```jsx
 <input type="text" value="Isso não será alterado. Tente." />
