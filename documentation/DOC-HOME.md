@@ -448,14 +448,12 @@ Muitos desenvolvedores preferem [Higher Order Components](#higher-order-componen
 Você pode criar um componente projetado para usar `context` e renderizar `children`.
 
 ```jsx
-class SomeContextProvider extends React.Component {
-  getChildContext() {
+function SomeContextProvider({ children }) {
+  function getChildContext() {
     return { some: "context" };
   }
 
-  render() {
-    // como retornamos children?
-  }
+  // como retornamos children?
 }
 ```
 
@@ -472,7 +470,7 @@ return children;
 É melhor tratar `children` como um tipo de dados opaco. O React fornece `React.Children` para lidar com `children` apropriadamente.
 
 ```jsx
-return React.Children.only(this.props.children);
+return React.Children.only(children);
 ```
 
 ## Componente Proxy
