@@ -640,20 +640,24 @@ const CommentList = ({ comments }) => (
 Podemos criar um novo componente responsável por buscar dados e renderizar o componente `CommentList`
 
 ```jsx
-import React, { useEffect, useState } from "react";
-
-function CommentListContainer() {
-  const [comments, setComments] = useState([]);
+const CommentListContainer = () => {
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
-    $.ajax({
-      url: "/my-comments.json",
-      dataType: "json",
-      success: (myComments) => setComments(myComments),
-    });
-  }, []);
+    const fetchComments = async () => {
+       try {
+          const response = await fetch("/my-comments.json");
+          const data = await response.json();
+          setComments(data);
 
-  return <CommentList comments={comments} />;
+       } catch (error) {
+          console.log("error: ", error);
+       }
+
+    fetchComments();
+  }, [])
+
+  return <CommentList comments={comments} />
 }
 ```
 
