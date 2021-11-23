@@ -6,7 +6,7 @@ Baseado no [Original](https://reactpatterns.com) por Michael Chan [@chantastic](
 
 Traduzido para Português e revisado por [@rubenmarcus](https://github.com/rubenmarcus)
 
-com contribuição de [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo), [@luizwbr](https://github.com/luizwbr), [@arimariojesus](https://github.com/arimariojesus), [@gabepinheiro](https://github.com/gabepinheiro) e [@GusttavoCastilho](https://github.com/GusttavoCastilho).
+com contribuição de [@LhuizF](https://github.com/LhuizF), [@matheusinfo](https://github.com/matheusinfo), [@luizwbr](https://github.com/luizwbr), [@arimariojesus](https://github.com/arimariojesus), [@gabepinheiro](https://github.com/gabepinheiro), [@GusttavoCastilho](https://github.com/GusttavoCastilho) e [@azraelgarden](https://github.com/azraelgarden).
 
 ## Conteúdo
 
