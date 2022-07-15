@@ -22,7 +22,7 @@
   "homepage": "https://github.com/readme/guiareact.org#readme",
   "dependencies": {
     "highlight.js": "^11.0.1",
-    "next": "^10.2.3",
+    "next": "^12.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "^6.0.2",
