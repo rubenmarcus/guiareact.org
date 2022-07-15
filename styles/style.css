@@ -14,38 +14,7 @@ html {
 ::marker {
   font-size: 12px;
 }
-header {
-  background: #20232a;
-  top: 0px;
-  width: 100%;
-  padding: 12px 85px;
-  align-items: center;
-  height: 70px;
-  font-weight: 600;
-  color: #61dafb;
-  display: flex;
-}
-header h1 {
-  color: #61dafb;
-}
-header ul {
-  display: flex;
-  flex-wrap: nowrap;
-}
-header li {
-  list-style: none;
-  margin-right: 41px;
-  line-height: 15px;
-  line-height: 22px;
-}
-header a {
-  color: #fff;
-  background: transparent;
-  font-weight: 400;
-}
-header a:hover {
-  color: #61dafb;
-}
+
 .guiaPadroes div h1:first-child {
   background: #20232a;
   top: 0px;
@@ -115,7 +84,8 @@ code {
   background: #000;
   color: #fff;
 }
-a {
+
+#main a {
   background-color: rgba(187, 239, 253, 0.3);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   color: #1a1a1a;
@@ -123,12 +93,13 @@ a {
   font-size: 16px;
   text-decoration: none;
 }
+
 p,
 pre {
   padding: 5px;
 }
 
-body {
+#main {
   font-size: 16px;
   margin: 0;
   color: #111;
@@ -144,27 +115,27 @@ h2 {
   font-weight: 500;
 }
 @media (min-width: 0) {
-  body {
+  #main {
     font-size: 16px;
   }
 }
 @media (min-width: 480px) {
-  body {
+  #main {
     font-size: 18px;
   }
 }
 @media (min-width: 720px) {
-  body {
+  #main {
     font-size: 20px;
   }
 }
 @media (min-width: 960px) {
-  body {
+  #main {
     font-size: 22px;
   }
 }
 @media (min-width: 1200px) {
-  body {
+  #main {
     font-size: 24px;
   }
 }
@@ -256,16 +227,6 @@ hr {
   code {
     max-width: 68vw;
     font-size: 0.6em !important;
-  }
-
-  header {
-    width: 100vw;
-    padding: 12px 5vw;
-  }
-
-  header nav {
-    position: absolute;
-    right: 0px;
   }
 
   .guiaPadroes div h1:first-child + p {

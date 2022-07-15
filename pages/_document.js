@@ -1,38 +1,20 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import PageHead from "../components/pagehead";
-import AppHeader from "../components/header";
-
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    let pageProps = null;
-
-    const originalRenderPage = ctx.renderPage;
-    ctx.renderPage = () =>
-      originalRenderPage({
-        enhanceApp: (App) => (props) => {
-          pageProps = props.pageProps;
-          return <App {...props} />;
-        },
-        enhanceComponent: (Component) => Component,
-      });
-
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps, pageProps };
-  }
-
+import React from 'react';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { getCssText } from '@modulz/design-system';
+import { renderSnippet, gtagUrl } from '../lib/analytics';
+class MyDocument extends NextDocument {
   render() {
-    const { pageProps } = this.props;
     return (
-      <Html>
+      <Html lang="en">
         <Head>
-          <PageHead title={pageProps.title} />
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          <link rel="icon" href="/favicon.png" />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <script async src={gtagUrl} />
+          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>
-        <body className={`guiaPadroes ${pageProps.cssClass}`}>
-          <AppHeader title={pageProps.title} />
-          <main>
-            <Main />
-          </main>
-
+        <body>
+          <Main />
           <NextScript />
         </body>
       </Html>
